@@ -1,45 +1,73 @@
-<html>
-<head>
-<title>Training Index Page</title>
-	
-	<link href="assets/css/style.css" rel="stylesheet">
-	
-</head>
-<body>
+<?php require('assets/head.php');?>
 
-<img class="prod" src="">
+<div class="col-md-2">
+<table>
 
-<ul>
-
-	<li>Title</li>
-	<li>Description</li>
-	<li><a class="add" id="1" href="#">Add</a></li>
-	<li>Price</li>
-
-</ul>
-
-
-<ul>
-
-	<li>Title</li>
-	<li>Description</li>
-	<a class="add" id="2" href="#">Add</a>
-	<li>Price</li>
-
-</ul>
+<tbody>
+<tr>
+    <img class="col-md-6" src="assets/img/prd.jpg">
+</tr>
+<tr>
+	<td>Title</td>
+</tr>
+<a class="pull-right" href="#">Add</a>
+<tr>
+	<td>Description</td>
+</tr>
+<tr>
+<td>Price</td>
+</tr>
 
 
-<ul>
-
-	<li>Title</li>
-	<li>Description</li>
-	<a class="add" id="3" href="#">Add</a>
-	<li>Price</li>
-
-</ul>
+</tbody>
+</table>
 
 
-<a href="#">Go to cart</a>
+    <table>
 
-</body>
-</html>
+        <tbody>
+        <tr>
+            <img class="col-md-6" src="assets/img/prd.jpg">
+        </tr>
+        <tr>
+            <td>Title</td>
+        </tr>
+        <a class="pull-right" href="#">Add</a>
+        <tr>
+            <td>Description</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+    <table>
+
+        <tbody>
+        <tr>
+            <img class="col-md-6" src="assets/img/prd.jpg">
+        </tr>
+        <tr>
+            <td>Title</td>
+        </tr>
+        <a class="pull-right" href="#">Add</a>
+        <tr>
+            <td>Description</td>
+        </tr>
+        <tr>
+            <td>Price</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+
+
+    <a href="#">Go to cart</a>
+</div>
+
+<?php require('assets/footer.php'); ?>
