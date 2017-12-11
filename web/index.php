@@ -5,7 +5,7 @@
 
 <tbody>
 <tr>
-    <img class="col-md-6" src="assets/img/prd.jpg">
+    <img class="col-md-6" src="assets/img/1.jpg">
 </tr>
 <tr>
 	<td>Title</td>
@@ -27,7 +27,7 @@
 
         <tbody>
         <tr>
-            <img class="col-md-6" src="assets/img/prd.jpg">
+            <img class="col-md-6" src="assets/img/2.jpg">
         </tr>
         <tr>
             <td>Title</td>
@@ -48,7 +48,7 @@
 
         <tbody>
         <tr>
-            <img class="col-md-6" src="assets/img/prd.jpg">
+            <img class="col-md-6" src="assets/img/3.jpg">
         </tr>
         <tr>
             <td>Title</td>

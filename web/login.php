@@ -14,7 +14,7 @@ if(isset($_POST['login'])) {
         $passw = $_POST['password'];
 
 
-        if(!$usern === "admin" && $passw === "parola"){
+        if(!$usern === $admin1 && $passw === $pass1){
 
             $msg = "Numele Adminului sau Parola sunt gresite !";
 

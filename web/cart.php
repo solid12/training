@@ -7,6 +7,19 @@ if(!isset($_SESSION['test'])){
     die("Trebuie sa te loghezi pentru a vedea pagina !");
 }
 
+if(isset($_POST['send'])){
+
+
+    $subject = "Your cart";
+    $txt = "Hello, here you have productions from your cart.
+    ";
+    $headers = "From: admin@example.com" . "\r\n" .
+        "CC: somebodyelse@example.com";
+
+    mail($adminemail,$subject,$txt,$headers);
+
+}
+
 $link = database();
 
 ?>
@@ -55,7 +68,7 @@ $link = database();
             <input type="text" name="contact" placeholder="Contact Details" autocomplete="off" />
             <textarea rows="4" cols="30" name="comment" form="cart">Comments...</textarea>
         </form>
-        <input type="submit" class="btn btn-success pull-right" name="login" value="Checkout">
+        <input type="submit" class="btn btn-success pull-right" name="send" value="Checkout">
 <a href="index.php">Go to index</a>
     </div>
 
