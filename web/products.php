@@ -57,3 +57,6 @@ if ($result->num_rows > 0) {
 
 
 </table>
+<?php
+include('assets/footer.php');
+?>

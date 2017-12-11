@@ -67,7 +67,7 @@
 
 
 
-    <a href="#">Go to cart</a>
+    <a href="cart.php"Go to cart</a>
 </div>
 
 <?php require('assets/footer.php'); ?>
