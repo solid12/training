@@ -72,7 +72,5 @@ if(mysqli_num_rows($query_server) > 0) {
     </form>
 </div>
 <?php }
-
 include ('assets/footer.php');
-
 ?>
