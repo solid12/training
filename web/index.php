@@ -8,11 +8,12 @@
 <body>
 
 <img class="prod" src="">
+
 <ul>
 
 	<li>Title</li>
 	<li>Description</li>
-	<a class="add" id="1" href="#">Add</a>
+	<li><a class="add" id="1" href="#">Add</a></li>
 	<li>Price</li>
 
 </ul>
