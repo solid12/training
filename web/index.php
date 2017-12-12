@@ -7,7 +7,7 @@ if(isset($_POST['id'])){
 }
 
 $cart = $_SESSION['products'];
-$result = database()->prepare("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE id ='$cart'");
+$result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE id ='$cart' LIMIT 0,1");
 ?>
 
 <?php if($result->num_rows > 0): ?>
@@ -22,7 +22,7 @@ $result = database()->prepare("SELECT `id`,`title`,`description`,`price` FROM `p
         <body>
 
 <div class="prod">
-<img  style="width: 250px;" src="assets/img/<?= $row['id'] ?>.jpg">
+<img  style="width: 250px;" src="<?= $row['id'] ?>.jpg">
 <ul>
     <li style="padding: 3px"><?= $row['title'] ?></li>
     <li style="padding: 3px"><?= $row['description'] ?></li>

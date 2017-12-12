@@ -1,12 +1,12 @@
 <?php
-require('assets/head.php');
+require_once('common.php');
 
 if(isset($_SESSION['test'])) {
 
     echo '<meta http-equiv="refresh" content="0; url=products.php" />';
 }
 
-if(isset($_POST['login'])) {
+    if(isset($_POST['login'])) {
 
 
         $usern = $_POST['user'];
@@ -14,43 +14,18 @@ if(isset($_POST['login'])) {
         $passw = $_POST['password'];
 
 
-        if(!$usern === $admin1 && $passw === $pass1){
+        if(!$usern === ADMIN && $passw === PASSWORD){
 
             $msg = "Numele Adminului sau Parola sunt gresite !";
 
-        }
+        } else {
 
-        /*** if we do have a result, all is well ***/
-
-        else
-
-        {
-
-            /*** set the session user_id variable ***/
             $_SESSION['test'] = true;
             $_SESSION['test'] = $usern;
 
             $msg = "Logat cu succes !";
 
-            echo "
-
-		<script type='text/javascript'>
-
-		<!--
-
-		function Redirect()
-
-		{
-
-			window.location='products.php';
-
-		}
-
-		setTimeout('Redirect()', 1500);
-
-		//-->
-
-		</script>";
+            header("Refresh:3; url=products.php");
 
         }
 
