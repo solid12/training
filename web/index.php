@@ -1,19 +1,17 @@
 <?php
-require('head.php');
+require_once('head.php');
 
-$link = database();
 
 if(isset($_POST['id'])){
 
     $_SESSION['products'] = $_POST['id'];
 }
-$result = $link->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE `id`=".$_SESSION['products']." ");
+$result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE `id`=".$_SESSION['products']." ");
+?>
 
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
+<?php if($result->num_rows > 0): ?>
+    <?php while($row = $result->fetch_assoc()): ?>
 
-
-        ?>
 
 <div class="prod">
 <img  style="width: 250px;" src="assets/img/<?=$_SESSION['products'];?>.jpg">
@@ -30,6 +28,7 @@ if ($result->num_rows > 0) {
 
 </div>
 
-<?php } } ?>
+    <?php endwhile; ?>
+<?php endif; ?>
     <a href="cart.php" Go to cart</a>
 <?php require('footer.php'); ?>

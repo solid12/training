@@ -3,7 +3,7 @@ require('config.php');
 session_start();
 
 function database(){
-    new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
+    $link = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
     if ($link->connect_error) {
         die("Check connection");
     }
