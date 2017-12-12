@@ -3,7 +3,7 @@ require_once('common.php');
 
 if(isset($_SESSION['test'])) {
 
-    echo '<meta http-equiv="refresh" content="0; url=products.php" />';
+    header("Refresh:3; url=products.php");;
 }
 
     if(isset($_POST['login'])) {
@@ -14,7 +14,7 @@ if(isset($_SESSION['test'])) {
         $passw = $_POST['password'];
 
 
-        if(!$usern === ADMIN && $passw === PASSWORD){
+        if(!$usern === ADMIN && !$passw === PASSWORD){
 
             $msg = "Numele Adminului sau Parola sunt gresite !";
 
@@ -33,7 +33,13 @@ if(isset($_SESSION['test'])) {
 
 ?>
 
+<html>
+<head>
+    <title>Training Index Page</title>
+    <link href="style.css" rel="stylesheet">
+</head>
 
+<body>
 
 
 <div id="login">
@@ -48,4 +54,5 @@ if(isset($_SESSION['test'])) {
     </form>
 </div>
 
-<?php require('assets/footer.php');?>
+</body>
+</html>

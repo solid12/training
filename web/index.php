@@ -7,7 +7,7 @@ if(isset($_POST['id'])){
 }
 
 $cart = $_SESSION['products'];
-$result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE id ='$cart' LIMIT 0,1");
+$result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE NOT id ='$cart'");
 ?>
 
 <?php if($result->num_rows > 0): ?>

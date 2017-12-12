@@ -1,6 +1,6 @@
 <?php
 
-require('head.php');
+require_once('common');
 
 if(!isset($_SESSION['test'])){
 
@@ -20,47 +20,45 @@ if(isset($_POST['send'])){
 
 }
 
-$link = database();
-
 ?>
+<html>
+    <head>
+        <title>Training Index Page</title>
+        <link href="style.css" rel="stylesheet">
+    </head>
 
-    <div class="col-md-2">
+<body>
 
         <?php
 
-        $result = $link->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE `id`=".$_SESSION['products']." ");
+        $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE NOT id ='$cart'");
+?>
+       <?php if ($result->num_rows > 0): ?>
+           <?php while ($row = $result->fetch_assoc()): ?>
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
+                ?
+       <table>
 
-                ?>
-
-
-                <table>
-
-                    <tbody>
-                    <tr>
-                        <img class="col-md-6" src="1.jpg">
-                    </tr>
-                    <tr>
-                        <td><?=$row['title'];?></td>
-                    </tr>
-                    <a class="pull-right" href="#">Remove</a>
-                    <tr>
-                        <td><?=$row['description'];?></td>
-                    </tr>
-                    <tr>
-                        <td><?=$row['price'];?></td>
-                    </tr>
+           <tbody>
+           <tr>
+               <img class="col-md-6" src="1.jpg">
+           </tr>
+           <tr>
+               <td><?=$row['title'];?></td>
+           </tr>
+           <a class="pull-right" href="#">Remove</a>
+           <tr>
+               <td><?=$row['description'];?></td>
+           </tr>
+           <tr>
+               <td><?=$row['price'];?></td>
+           </tr>
 
 
-                    </tbody>
-                </table>
-
-
-                <?php
-
-            }
+           </tbody>
+       </table>
+    <?php endwhile; ?>
+    <?php endif; ?>
         }else{ echo 'Nu exista produse !';}
         ?>
         <form action="" method="post" name="cart">
@@ -72,9 +70,5 @@ $link = database();
 <a href="index.php">Go to index</a>
     </div>
 
-
-
-    </table>
-<?php
-include('footer.php');
-?>
+</body>
+</html>
