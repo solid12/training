@@ -1,5 +1,5 @@
 <?php
-require('assets/head.php');
+require('head.php');
 
 $link = database();
 

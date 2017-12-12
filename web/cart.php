@@ -1,6 +1,6 @@
 <?php
 
-require('assets/head.php');
+require('head.php');
 
 if(!isset($_SESSION['test'])){
 
