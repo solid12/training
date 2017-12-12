@@ -76,5 +76,5 @@ $link = database();
 
     </table>
 <?php
-include('assets/footer.php');
+include('footer.php');
 ?>

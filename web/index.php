@@ -32,4 +32,4 @@ if ($result->num_rows > 0) {
 
 <?php } } ?>
     <a href="cart.php"Go to cart</a>
-<?php require('assets/footer.php'); ?>
+<?php require('footer.php'); ?>
