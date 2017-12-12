@@ -14,12 +14,12 @@ $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `pro
     <?php while($row = $result->fetch_assoc()): ?>
 
 <html>
-<head>
-            <title>Training Index Page</title>
-            <link href="style.css" rel="stylesheet">
-</head>
+    <head>
+        <title>Training Index Page</title>
+        <link href="style.css" rel="stylesheet">
+    </head>
 
-        <body>
+<body>
 
 <div class="prod">
 <img  style="width: 250px;" src="<?= $row['id'] ?>.jpg">
@@ -39,5 +39,5 @@ $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `pro
     <?php endwhile; ?>
 <?php endif; ?>
     <a href="cart.php" Go to cart</a>
-        </body>
+</body>
 </html>

@@ -4,7 +4,7 @@ require_once('common');
 
 if(!isset($_SESSION['test'])){
 
-    die("Trebuie sa te loghezi pentru a vedea pagina !");
+    die("You should to be logged to see the page !");
 }
 
 if(isset($_POST['send'])){
@@ -59,7 +59,7 @@ if(isset($_POST['send'])){
        </table>
     <?php endwhile; ?>
     <?php endif; ?>
-        }else{ echo 'Nu exista produse !';}
+        }else{ echo 'Not exists products...';}
         ?>
         <form action="" method="post" name="cart">
             <input type="text" name="name" placeholder="Name" autocomplete="off" />

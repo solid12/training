@@ -7,23 +7,21 @@ if(isset($_SESSION['test'])) {
 }
 
     if(isset($_POST['login'])) {
-
-
+        
         $usern = $_POST['user'];
-
         $passw = $_POST['password'];
 
 
         if(!$usern === ADMIN && !$passw === PASSWORD){
 
-            $msg = "Numele Adminului sau Parola sunt gresite !";
+            $msg = "Username or Password are wrong !";
 
         } else {
 
             $_SESSION['test'] = true;
             $_SESSION['test'] = $usern;
 
-            $msg = "Logat cu succes !";
+            $msg = "Logged with success !";
 
             header("Refresh:3; url=products.php");
 
