@@ -1,73 +1,35 @@
-<?php require('assets/head.php');?>
+<?php
+require('assets/head.php');
 
-<div class="col-md-2">
-<table>
+$link = database();
 
-<tbody>
-<tr>
-    <img class="col-md-6" src="assets/img/1.jpg">
-</tr>
-<tr>
-	<td>Title</td>
-</tr>
-<a class="pull-right" href="#">Add</a>
-<tr>
-	<td>Description</td>
-</tr>
-<tr>
-<td>Price</td>
-</tr>
+if(isset($_POST['id'])){
+
+    $_SESSION['products'] = $_POST['id'];
+}
+$result = $link->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE `id`=".$_SESSION['products']." ");
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
 
 
-</tbody>
-</table>
+        ?>
 
+<div class="prod">
+<img  style="width: 250px;" src="assets/img/<?=$row['id'];?>.jpg">
+<ul>
+    <li style="padding: 3px"><?=$row['title'];?></li>
+    <li style="padding: 3px"><?=$row['description'];?></li>
+    <li style="padding: 3px"><?=$row['price'];?></li>
+</ul>
 
-    <table>
+<form action="" method="post">
+    <input style="display: none" name="id" value="<?=$row['id'];?>">
+    <button href="#" type="submit">Add</button>
+</form>
 
-        <tbody>
-        <tr>
-            <img class="col-md-6" src="assets/img/2.jpg">
-        </tr>
-        <tr>
-            <td>Title</td>
-        </tr>
-        <a class="pull-right" href="#">Add</a>
-        <tr>
-            <td>Description</td>
-        </tr>
-        <tr>
-            <td>Price</td>
-        </tr>
-
-
-        </tbody>
-    </table>
-
-    <table>
-
-        <tbody>
-        <tr>
-            <img class="col-md-6" src="assets/img/3.jpg">
-        </tr>
-        <tr>
-            <td>Title</td>
-        </tr>
-        <a class="pull-right" href="#">Add</a>
-        <tr>
-            <td>Description</td>
-        </tr>
-        <tr>
-            <td>Price</td>
-        </tr>
-
-
-        </tbody>
-    </table>
-
-
-
-    <a href="cart.php"Go to cart</a>
 </div>
 
+<?php } } ?>
+    <a href="cart.php"Go to cart</a>
 <?php require('assets/footer.php'); ?>

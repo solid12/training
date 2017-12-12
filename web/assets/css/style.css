@@ -12,16 +12,19 @@ a{
     max-width: 290px;
 }
 
-
-.msg{
-
-    color: #2aabd2;
+tr{
+    position: relative;
+    left: 260px;
+    bottom: 110px;
 }
 
 ul{
     color: white;
-
+    display: inline-block;
+    list-style : none;
+    position: absolute;
 }
+
 
 
 #login{

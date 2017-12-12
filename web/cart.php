@@ -28,7 +28,7 @@ $link = database();
 
         <?php
 
-        $result = $link->query("SELECT `id`,`title`,`description`,`price` FROM `products` ORDER by `id` ASC LIMIT 0,3");
+        $result = $link->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE `id`=".$_SESSION['products']." ");
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -40,7 +40,7 @@ $link = database();
 
                     <tbody>
                     <tr>
-                        <img class="col-md-6" src="assets/img/prd.jpg">
+                        <img class="col-md-6" src="assets/img/1.jpg">
                     </tr>
                     <tr>
                         <td><?=$row['title'];?></td>

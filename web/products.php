@@ -27,7 +27,7 @@ if ($result->num_rows > 0) {
 
             <tbody>
             <tr>
-                <img class="col-md-6" src="assets/img/prd.jpg">
+                <img class="col-md-6" src="assets/img/1.jpg">
             </tr>
             <tr>
                 <td><?=$row['title'];?></td>
