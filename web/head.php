@@ -1,4 +1,4 @@
-<?php include('assets/common.php');
+<?php include('common.php');
 
 ?>
 
@@ -6,7 +6,7 @@
 <head>
     <title>Training Index Page</title>
 
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
 
 </head>
 <body>
