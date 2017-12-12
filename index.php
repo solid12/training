@@ -31,5 +31,5 @@ if ($result->num_rows > 0) {
 </div>
 
 <?php } } ?>
-    <a href="cart.php"Go to cart</a>
+    <a href="cart.php" Go to cart</a>
 <?php require('footer.php'); ?>
