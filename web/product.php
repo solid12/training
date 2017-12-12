@@ -1,6 +1,6 @@
 <?php
 
-require ('assets/head.php');
+require('assets/head.php');
 
 if(!isset($_SESSION['test'])){
 
@@ -72,5 +72,5 @@ if(mysqli_num_rows($query_server) > 0) {
     </form>
 </div>
 <?php }
-include ('assets/footer.php');
+include('assets/footer.php');
 ?>

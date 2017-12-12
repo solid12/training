@@ -20,6 +20,6 @@ if(isset($_GET['id'])) {
 
 <?php }
 
-include ('assets/footer.php');
+include('assets/footer.php');
 
 ?>

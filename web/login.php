@@ -1,5 +1,5 @@
 <?php
-require ('assets/head.php');
+require('assets/head.php');
 
 if(isset($_SESSION['test'])) {
 
@@ -73,4 +73,4 @@ if(isset($_POST['login'])) {
     </form>
 </div>
 
-<?php require ('assets/footer.php');?>
+<?php require('assets/footer.php');?>

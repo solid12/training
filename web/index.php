@@ -16,7 +16,7 @@ if ($result->num_rows > 0) {
         ?>
 
 <div class="prod">
-<img  style="width: 250px;" src="assets/img/<?=$row['id'];?>.jpg">
+<img  style="width: 250px;" src="assets/img/<?=$_SESSION['products'];?>.jpg">
 <ul>
     <li style="padding: 3px"><?=$row['title'];?></li>
     <li style="padding: 3px"><?=$row['description'];?></li>

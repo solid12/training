@@ -5,6 +5,6 @@ unset($_SESSION['test']);
 
 echo '<meta http-equiv=\"refresh\" content=\"2; url=login.php\" />';
 
-include ('assets/footer.php');
+include('assets/footer.php');
 
 ?>
