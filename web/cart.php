@@ -4,6 +4,7 @@ if(isset($_POST['send'])){
 
     $subject = "Your cart";
     $txt = "Hello, here you have productions from your cart.
+    foreach(
     ";
     $headers = "From: admin@example.com" . "\r\n" .
         "CC: somebodyelse@example.com";
@@ -12,12 +13,7 @@ if(isset($_POST['send'])){
 
 }
 
-if(isset($_GET['action'])){
-    unset($_SESSION['cart']);
-    header("Refresh: 3 url=cart.php");
-}
-
-$cart = $_SESSION['cart'];
+$cart = $_SESSION['cart'][0]['id'];
 $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE id ='$cart'");
 
 ?>

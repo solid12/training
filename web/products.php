@@ -6,7 +6,7 @@ if(!isset($_SESSION['admin'])){
     die("Trebuie sa te loghezi pentru a vedea pagina !");
 }
 
-$result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` ORDER by `id` ASC LIMIT 0,3");
+$result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` ORDER by `id` ");
 ?>
 
 <?php if ($result->num_rows > 0): ?>

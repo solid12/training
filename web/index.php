@@ -1,12 +1,12 @@
 <?php
 require_once('common.php');
 
-if(isset($_GET['id'])){
-    $_SESSION['cart'] = array();
-    array_push($_SESSION['cart'], array('id' => $_GET['id']));
-}
 $_SESSION['cart'] = array();
-$cart = $_SESSION['cart'];
+if(isset($_GET['id'])){
+    array_push($_SESSION['cart'], array("id" => $_GET['id']));
+}
+
+$cart = $_SESSION['cart'][0]['id'];
 $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE NOT id ='$cart'");
 
 ?>
@@ -31,7 +31,7 @@ $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `pro
 </ul>
 
 
-    <a href="?id=<?= $row['id'] ?>" name="id">Add</a>
+    <a href="index.php?id=<?= $row['id'] ?>" name="id">Add</a>
 
 
     <?php endwhile; ?>

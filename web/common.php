@@ -13,10 +13,10 @@ function database(){
 function sql_safe($value) {
     if (get_magic_quotes_gpc())
         $value=stripslashes_recursive($value);
-    return mysqli_real_escape_string($link, $value);
+    return mysqli_real_escape_string(database(), $value);
 }
-if(isset($_SESSION['test'])){
-    $username = htmlspecialchars($_SESSION['test']);
+if(isset($_SESSION['admin'])){
+    $username = htmlspecialchars($_SESSION['admin']);
 }
 
 ?>

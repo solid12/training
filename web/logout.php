@@ -1,7 +1,7 @@
 <?php 
 require_once('common.php');
 
-unset($_SESSION['test']);
+unset($_SESSION['admin']);
 
 header("Refresh: 3; url=index.php");
 
