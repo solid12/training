@@ -3,11 +3,10 @@ body {
 }
 
 a{
-
      color: red;
  }
 
-.prod{
+img{
 
     max-width: 290px;
 }
@@ -24,8 +23,6 @@ ul{
     list-style : none;
     position: absolute;
 }
-
-
 
 #login{
     padding: 0px 15px 15px 15px;
@@ -47,4 +44,9 @@ form input{
     padding: 12px 15px;
     max-width: 100px;
     color: #ffffff;
+}
+
+form{
+
+    max-width: 350px;
 }

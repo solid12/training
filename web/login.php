@@ -1,9 +1,9 @@
 <?php
 require_once('common.php');
 
-if(isset($_SESSION['test'])) {
+if(isset($_SESSION['admin'])) {
 
-    header("Refresh:3; url=products.php");;
+    header("Refresh:0; url=products.php");
 }
 
     if(isset($_POST['login'])) {
@@ -16,13 +16,11 @@ if(isset($_SESSION['test'])) {
 
             $msg = "Username or Password are wrong !";
 
-        } else {
+        }else{
 
-            $_SESSION['test'] = true;
-            $_SESSION['test'] = $usern;
-
+            $_SESSION['admin'] = true;
+            $_SESSION['admin'] = $usern;
             $msg = "Logged with success !";
-
             header("Refresh:3; url=products.php");
 
         }
@@ -41,13 +39,12 @@ if(isset($_SESSION['test'])) {
 
 
 <div id="login">
-    <?php     if(isset($_POST['login'])) { echo $msg; } ?>
+    <?php if(isset($_POST['login'])) { echo '<center>'.$msg.'</center>'; } ?>
     <form method="post" action="" name="login">
         <label>Username</label>
-        <input type="text" name="user" placeholder="Username" autocomplete="off" />
+        <input type="text" name="user" placeholder="Username" autocomplete="off" required="required"/>
         <label>Password</label>
-        <input type="password" name="password" placeholder="Password" autocomplete="off"/>
-
+        <input type="password" name="password" placeholder="Password" autocomplete="off" required="required"/>
         <input type="submit" class="button" name="login" value="Login">
     </form>
 </div>

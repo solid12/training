@@ -1,25 +1,27 @@
 <?php
-include('assets/head.php');
 
 if(isset($_GET['id'])) {
     $link = database();
-    $aid = $_GET['id'];
-
-    $query = mysqli_query($link, "DELETE FROM `products`  WHERE `id`='$aid' LIMIT 1");
+    $id = $_GET['id'];
+    $query = mysqli_query($link, "DELETE FROM `products`  WHERE `id`='$id' LIMIT 1");
 
 }
-
 ?>
+<html>
+<head>
+    <title>Training Index Page</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
 
 
-<?php if($query){ ?>
-
+<?php if($query): ?>
 
 <div class="alert-danger">The product has been deleted !</div>
 <meta http-equiv="refresh" content="3; url=products.php" />
 
-<?php }
+<?php endif; ?>
 
-include('assets/footer.php');
-
-?>
+</body>
+</html>

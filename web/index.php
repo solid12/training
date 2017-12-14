@@ -1,12 +1,12 @@
 <?php
 require_once('common.php');
 
-if(isset($_POST['id'])){
+if(isset($_POST['add'])){
 
-    $_SESSION['products'] = $_POST['id'];
+    $_SESSION['cart'] = $_POST['id'];
 }
 
-$cart = $_SESSION['products'];
+$cart = $_SESSION['cart'];
 $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE NOT id ='$cart'");
 ?>
 
@@ -31,13 +31,13 @@ $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `pro
 
 <form action="" method="post">
     <input type="hidden" name="id" value="<?= $row['id'] ?>">
-    <a href="#" type="submit">Add</a>
+    <button name="add" type="submit">Add</button>
 </form>
 
 </div>
 
     <?php endwhile; ?>
 <?php endif; ?>
-    <a href="cart.php" Go to cart</a>
+<a href="cart.php">Go to cart</a>
 </body>
 </html>

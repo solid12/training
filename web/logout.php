@@ -1,10 +1,22 @@
 <?php 
-include('assets/common.php');
+require_once('common.php');
 
 unset($_SESSION['test']);
 
-echo '<meta http-equiv=\"refresh\" content=\"2; url=login.php\" />';
-
-include('assets/footer.php');
+header("Refresh: 3; url=index.php");
 
 ?>
+
+<html>
+<head>
+    <title>Training Index Page</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+    <body>
+
+<b>You are logged out !<b/>
+
+    </body>
+</html>
+

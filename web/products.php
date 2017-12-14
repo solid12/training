@@ -1,28 +1,24 @@
 <?php
+require_once('common.php');
 
-require('assets/head.php');
-
-if(!isset($_SESSION['test'])){
+if(!isset($_SESSION['admin'])){
 
     die("Trebuie sa te loghezi pentru a vedea pagina !");
 }
 
-$link = database();
-
+$result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` ORDER by `id` ASC LIMIT 0,3");
 ?>
 
-<div class="col-md-2">
+<?php if ($result->num_rows > 0): ?>
+   <?php while ($row = $result->fetch_assoc()) : ?>
 
-<?php
+<html>
+<head>
+    <title>Training Login Page</title>
+    <link href="style.css" rel="stylesheet">
+</head>
 
-$result = $link->query("SELECT `id`,`title`,`description`,`price` FROM `products` ORDER by `id` ASC LIMIT 0,3");
-
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-
-        ?>
-
-
+<body>
         <table>
 
             <tbody>
@@ -30,33 +26,27 @@ if ($result->num_rows > 0) {
                 <img class="col-md-6" src="1.jpg">
             </tr>
             <tr>
-                <td><?=$row['title'];?></td>
+                <td><?= $row['title'] ?></td>
             </tr>
-            <a class="pull-right" href="product.php?id=<?=$row['id'];?>">Edit</a><a class="pull-right" href="delete.php?id=<?=$row['id'];?>">Delete</a>
+            <a class="pull-right" href="product.php?id=<?= $row['id'] ?>">Edit</a><a class="pull-right" href="delete.php?id=<?= $row['id'] ?>">Delete</a>
             <tr>
-                <td><?=$row['description'];?></td>
+                <td><?= $row['description'] ?></td>
             </tr>
             <tr>
-                <td><?=$row['price'];?></td>
+                <td><?= $row['price'] ?></td>
             </tr>
 
 
             </tbody>
         </table>
 
-        <?php
+    <?php endwhile; ?>
+<?php else: ?>
 
-    }
-}else{ echo 'Nu exista produse !';}
-?>
+       <?php echo 'Products not exist !'; ?>
+
+<?php endif; ?>
 
     <h6></h6><a class="pull-right" href="add.php">Add</a> <a class="pull-right" href="logout.php">Logout</a></h6>
-
-</div>
-
-
-
-</table>
-<?php
-include('assets/footer.php');
-?>
+</body>
+</html>
