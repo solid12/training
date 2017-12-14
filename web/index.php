@@ -1,13 +1,14 @@
 <?php
 require_once('common.php');
 
-if(isset($_POST['add'])){
-
-    $_SESSION['cart'] = $_POST['id'];
+if(isset($_GET['id'])){
+    $_SESSION['cart'] = array();
+    array_push($_SESSION['cart'], array('id' => $_GET['id']));
 }
-
+$_SESSION['cart'] = array();
 $cart = $_SESSION['cart'];
 $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE NOT id ='$cart'");
+
 ?>
 
 <?php if($result->num_rows > 0): ?>
@@ -21,7 +22,7 @@ $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `pro
 
 <body>
 
-<div class="prod">
+
 <img  style="width: 250px;" src="<?= $row['id'] ?>.jpg">
 <ul>
     <li style="padding: 3px"><?= $row['title'] ?></li>
@@ -29,12 +30,9 @@ $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `pro
     <li style="padding: 3px"><?= $row['price'] ?></li>
 </ul>
 
-<form action="" method="post">
-    <input type="hidden" name="id" value="<?= $row['id'] ?>">
-    <button name="add" type="submit">Add</button>
-</form>
 
-</div>
+    <a href="?id=<?= $row['id'] ?>" name="id">Add</a>
+
 
     <?php endwhile; ?>
 <?php endif; ?>

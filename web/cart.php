@@ -12,15 +12,17 @@ if(isset($_POST['send'])){
 
 }
 
-if(isset($_GET['id'])){
+if(isset($_GET['action'])){
     unset($_SESSION['cart']);
     header("Refresh: 3 url=cart.php");
 }
 
-$cart = array();
 $cart = $_SESSION['cart'];
 $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE id ='$cart'");
+
 ?>
+
+
 <html>
     <head>
         <title>Training Index Page</title>
@@ -63,7 +65,7 @@ $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `pro
             <input type="text" name="name" placeholder="Name" autocomplete="off" required="required"/>
             <input type="text" name="contact" placeholder="Contact Details" autocomplete="off" required="required" />
             <textarea rows="4" cols="30" name="comment" form="cart">Comments...</textarea>
-        <input type="submit" class="btn btn-success pull-right" name="send" value="Checkout">
+        <button type="submit" class="btn btn-success pull-right" name="send" >Checkout</button>
         </form>
 <a href="index.php">Go to index</a>
 
