@@ -7,11 +7,15 @@ if(isset($_GET['id'])){
 }
 
 $cart = $_SESSION['cart'][0]['id'];
-$result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE NOT id ='$cart'");
+print_r($cart);
+$stmt = database()->prepare("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE NOT `id` = ? ");
+$stmt->bind_param('i', $cart);
+$stmt->execute();
+$result = $stmt->get_result();
 
 ?>
 
-<?php if($result->num_rows > 0): ?>
+<?php if ($result->num_rows > 0): ?>
     <?php while($row = $result->fetch_assoc()): ?>
 
 <html>
@@ -33,9 +37,10 @@ $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `pro
 
     <a href="index.php?id=<?= $row['id'] ?>" name="id">Add</a>
 
-
     <?php endwhile; ?>
+<?php $stmt->free_result(); ?>
 <?php endif; ?>
+
 <a href="cart.php">Go to cart</a>
 </body>
 </html>

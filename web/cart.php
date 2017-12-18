@@ -14,8 +14,10 @@ if(isset($_POST['send'])){
 }
 
 $cart = $_SESSION['cart'][0]['id'];
-$result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE id ='$cart'");
-
+$stmt= database()->prepare("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE IN `id` = ?");
+$stmt->bind_param('i', $cart);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 
@@ -52,6 +54,7 @@ $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `pro
            </tbody>
        </table>
     <?php endwhile; ?>
+           <?php $stmt->free_result(); ?>
        <?php else: ?>
 
            <?php echo 'The cart is empty';?>
