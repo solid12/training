@@ -11,7 +11,7 @@ if(isset($_GET['id'])) {
 ?>
 <html>
 <head>
-    <title>Training Index Page</title>
+    <title><?php echo strtr("Training Page Index", $trans); ?></title>
     <link href="style.css" rel="stylesheet">
 </head>
 

@@ -50,7 +50,8 @@ $resultt = $stmt->get_result();
 
 <html>
     <head>
-        <title>Training Index Page</title>
+        <title><?php echo strtr("Training Page Index", $trans); ?></title>
+        <title><?php echo strtr("Training Page Index", $trans); ?></title>
         <link href="style.css" rel="stylesheet">
     </head>
 
@@ -62,7 +63,7 @@ $resultt = $stmt->get_result();
 
            <tbody>
            <tr>
-               <img src="1.jpg">
+               <img src="images/1.jpg">
            </tr>
            <tr>
                <td><?= $row['title'] ?></td>

@@ -19,4 +19,7 @@ if(isset($_SESSION['admin'])){
     $username = htmlspecialchars($_SESSION['admin']);
 }
 
+
+$trans = array("Training Page Index" => "-", "Title" => "Title", "hi" => "hello");
+
 ?>

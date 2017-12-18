@@ -14,7 +14,7 @@ $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `pro
 
 <html>
 <head>
-    <title>Training Login Page</title>
+    <title><?php echo strtr("Training Page Index", $trans); ?></title>
     <link href="style.css" rel="stylesheet">
 </head>
 
@@ -23,7 +23,7 @@ $result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `pro
 
             <tbody>
             <tr>
-                <img class="col-md-6" src="1.jpg">
+                <img class="col-md-6" src="images/1.jpg">
             </tr>
             <tr>
                 <td><?= $row['title'] ?></td>
