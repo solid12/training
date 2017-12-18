@@ -20,6 +20,6 @@ if(isset($_SESSION['admin'])){
 }
 
 
-$trans = array("Training Page Index" => "-", "Title" => "Title", "hi" => "hello");
+$trans = array("title" => "Training Index Page", "Title" => "Title", "hi" => "hello");
 
 ?>

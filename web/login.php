@@ -31,7 +31,7 @@ if(isset($_SESSION['admin'])) {
 
 <html>
 <head>
-    <title><?php echo strtr("Training Page Index", $trans); ?></title>
+    <title><?php echo strtr("title", $trans); ?></title>
     <link href="style.css" rel="stylesheet">
 </head>
 

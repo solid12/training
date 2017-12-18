@@ -9,7 +9,7 @@ header("Refresh: 3; url=index.php");
 
 <html>
 <head>
-    <title>Training Index Page</title>
+    <title><?php echo strtr("title", $trans); ?></title>
     <link href="style.css" rel="stylesheet">
 </head>
 

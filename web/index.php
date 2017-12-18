@@ -3,7 +3,7 @@ require_once('common.php');
 
 $_SESSION['cart']=isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 
-$i = 0;
+$i = 8;
 $i++;
 $cart = $_SESSION['cart'][$i];
 
@@ -22,13 +22,13 @@ endif;
 
 <html>
     <head>
-        <title><?php echo strtr("Training Page Index", $trans); ?></title>
+        <title><?php echo strtr("title", $trans); ?></title>
         <link href="style.css" rel="stylesheet">
     </head>
 
 <body>
 
-<?php if ($result->num_rows > 0): ?>
+<?php if($result): ?>
     <?php while($row = $result->fetch_assoc()): ?>
 
 <img  style="width: 250px;" src="<?= $row['id'] ?>.jpg">
@@ -42,9 +42,9 @@ endif;
     <a href="index.php?id=<?= $row['id'] ?>" name="id">Add</a>
 
     <?php endwhile; ?>
-
+    <?php $stmt->free_result(); ?>
 <?php endif; ?>
-<?php $stmt->free_result(); ?>
+
 <?php $stmt->close(); ?>
 <a href="cart.php">Go to cart</a>
 </body>
