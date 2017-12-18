@@ -2,9 +2,36 @@
 require_once('common.php');
 if(isset($_POST['send'])){
 
+
+$cart = $_SESSION['cart'][0]['id'];
+ $result = database()-prepare("SELECT `name`,`description`,`price` FROM `products` WHERE `id` = ? ");
+$result->bind_param('i', $cart);
+$result->execute();
+$result2 = $result->get_result();
+
+    while($row = $result2->fetch_assoc())
+    {
+
+        $nume = $row['title'];
+        $desc = $row['description'];
+        $pret = $row['price'];
+    }
+$result->free_result();
+
     $subject = "Your cart";
     $txt = "Hello, here you have productions from your cart.
-    foreach(
+<table>
+
+<tr>
+    <td>$nume</td>
+</tr>
+ <tr>
+     <td>$desc</td>
+</tr>
+<tr>
+    <td>$pret</td>
+</tr>
+</table>
     ";
     $headers = "From: admin@example.com" . "\r\n" .
         "CC: somebodyelse@example.com";
@@ -17,7 +44,7 @@ $cart = $_SESSION['cart'][0]['id'];
 $stmt= database()->prepare("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE IN `id` = ?");
 $stmt->bind_param('i', $cart);
 $stmt->execute();
-$result = $stmt->get_result();
+$resultt = $stmt->get_result();
 ?>
 
 
@@ -28,8 +55,8 @@ $result = $stmt->get_result();
     </head>
 
 <body>
-       <?php if ($result->num_rows > 0): ?>
-           <?php while ($row = $result->fetch_assoc()): ?>
+       <?php if ($resultt->num_rows > 0): ?>
+           <?php while ($row = $resultt->fetch_assoc()): ?>
 
        <table>
 
