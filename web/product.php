@@ -13,19 +13,24 @@ if(isset($_POST['submit'])) {
     $descriere    =   sql_safe($_POST["description"]);
     $pret     =    sql_safe($_POST["price"]);
 
-    $query = mysqli_query(database(), "UPDATE `products` SET  `title`='".$titlu."',							
-															  `description`='".$descriere."',
-															  `price`='".$pret."' WHERE `id` = '".$id."' LIMIT 1");
+    $stmt = database()->prepare( "UPDATE `products` SET  `title`= ? ,							
+															  `description`= ? ,
+															  `price`= ? WHERE `id` = ? LIMIT 1");
+    $stmt->bind_param('ssii', $titlu, $descriere, $pret,$id);
+    $stmt->execute();
 }
 
-$query2 =  mysqli_query(database(), "SELECT * FROM `products` WHERE `id`='".$id."' LIMIT 0 , 1");
+    $stmt2 = database()->prepare( "SELECT * FROM `products` WHERE `id`= ? LIMIT 0 , 1");
+    $stmt2->bind_param('i',$id);
+    $stmt2->execute();
+    $stmt2->get_result();
 ?>
 
-<?php if(mysqli_num_rows($query2) > 0): ?>
+<?php if(mysqli_num_rows($stmt2) > 0): ?>
 
 
 
-<?php while($rand = mysqli_fetch_array($query2)) {
+<?php while($rand = mysqli_fetch_array($stmt2)) {
         $datat = $rand["title"];
         $datad=   	 $rand["description"];
         $datap=   	 $rand["price"];
@@ -33,7 +38,7 @@ $query2 =  mysqli_query(database(), "SELECT * FROM `products` WHERE `id`='".$id.
 ?>
 
 
-    <?php if(isset($_POST['submit']) && ($query)): ?>
+    <?php if(isset($_POST['submit']) && ($stmt)): ?>
 
         <div class="alert alert-success"> <strong> INFO: </strong> The product has been updated ! </div>
         <meta http-equiv="refresh" content="3; url=products.php" />

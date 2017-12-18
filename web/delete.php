@@ -3,7 +3,9 @@
 if(isset($_GET['id'])) {
     $link = database();
     $id = $_GET['id'];
-    $query = mysqli_query($link, "DELETE FROM `products`  WHERE `id`='$id' LIMIT 1");
+    $stmt->database()->prepare($link, "DELETE FROM `products`  WHERE `id`= ? LIMIT 1");
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
 
 }
 ?>
@@ -16,7 +18,7 @@ if(isset($_GET['id'])) {
 <body>
 
 
-<?php if($query): ?>
+<?php if($stmt): ?>
 
 <div class="alert-danger">The product has been deleted !</div>
 <meta http-equiv="refresh" content="3; url=products.php" />

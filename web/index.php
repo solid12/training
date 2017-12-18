@@ -7,7 +7,6 @@ if(isset($_GET['id'])){
 }
 
 $cart = $_SESSION['cart'][0]['id'];
-print_r($cart);
 $stmt = database()->prepare("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE NOT `id` = ? ");
 $stmt->bind_param('i', $cart);
 $stmt->execute();
