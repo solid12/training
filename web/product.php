@@ -28,15 +28,13 @@ if(isset($_POST['submit'])) {
 
 <?php if(mysqli_num_rows($stmt2) > 0): ?>
 
-
-
 <?php while($rand = mysqli_fetch_array($stmt2)) {
         $datat = $rand["title"];
         $datad=   	 $rand["description"];
         $datap=   	 $rand["price"];
     }
-?>
-
+ $stmt->free_result();
+    ?>
 
     <?php if(isset($_POST['submit']) && ($stmt)): ?>
 
