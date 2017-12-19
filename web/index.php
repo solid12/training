@@ -6,7 +6,7 @@ $_SESSION['cart']=isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
     if (isset($_GET['id'])):
         array_push($_SESSION['cart'], $_GET['id']);
 
-        $cart = $_SESSION['cart'][$i];
+        $cart = $_SESSION['cart'];
     endif;
 
 foreach($_SESSION['cart'] as $key => $value) {

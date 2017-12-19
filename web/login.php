@@ -7,12 +7,12 @@ if(isset($_SESSION['admin'])) {
 }
 
     if(isset($_POST['login'])) {
-        
+
         $usern = $_POST['user'];
         $passw = $_POST['password'];
 
 
-        if(!$usern === ADMIN && !$passw === PASSWORD){
+        if(!($usern === ADMIN && $passw === PASSWORD)){
 
             $msg = "Username or Password are wrong !";
 
@@ -40,7 +40,7 @@ if(isset($_SESSION['admin'])) {
 
 <div id="login">
     <?php if(isset($_POST['login'])) { echo '<center>'.$msg.'</center>'; } ?>
-    <form method="post" action="" name="login">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="login">
         <label>Username</label>
         <input type="text" name="user" placeholder="Username" autocomplete="off" required="required"/>
         <label>Password</label>
