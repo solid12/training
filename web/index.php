@@ -8,9 +8,6 @@ $_SESSION['cart']=isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 
         $cart = $_SESSION['cart'][$i];
     endif;
-//while (list ($key, $val) = each ($_SESSION['cart'])) {
-  //  $v1 = array($val);
- // echo($v1);
 
 foreach($_SESSION['cart'] as $key => $value) {
 
