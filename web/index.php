@@ -5,21 +5,18 @@ $_SESSION['cart']=isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 
     if (isset($_GET['id'])):
         array_push($_SESSION['cart'], $_GET['id']);
-
-        $cart = $_SESSION['cart'];
     endif;
 
 foreach($_SESSION['cart'] as $key => $value) {
 
     $id = $value;
 
-}
-
     $stmt = database()->prepare("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE NOT `id` = ? ");
     $stmt->bind_param('i', $id);
     $stmt->execute();
     $result = $stmt->get_result();
-
+    $row = $stmt->fetch();
+}
 ?>
 
 
@@ -31,8 +28,6 @@ foreach($_SESSION['cart'] as $key => $value) {
 
 <body>
 
-<?php if($result): ?>
-    <?php while($row = $result->fetch_assoc()): ?>
 
 <img  style="width: 250px;" src="<?= $row['id'] ?>.jpg">
 <ul>
@@ -44,9 +39,6 @@ foreach($_SESSION['cart'] as $key => $value) {
 
     <a href="index.php?id=<?= $row['id'] ?>" name="id">Add</a>
 
-    <?php endwhile; ?>
-    <?php $stmt->free_result(); ?>
-<?php endif; ?>
 
 <?php $stmt->close(); ?>
 <a href="cart.php">Go to cart</a>
