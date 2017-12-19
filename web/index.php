@@ -3,17 +3,23 @@ require_once('common.php');
 
 $_SESSION['cart']=isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
 
-$i = 8;
-$i++;
-$cart = $_SESSION['cart'][$i];
+    if (isset($_GET['id'])):
+        array_push($_SESSION['cart'], $_GET['id']);
 
+        $cart = $_SESSION['cart'][$i];
+    endif;
+//while (list ($key, $val) = each ($_SESSION['cart'])) {
+  //  $v1 = array($val);
+ // echo($v1);
 
-if(isset($_GET['id'])):
-    array_push($_SESSION['cart'], $_GET['id']);
-    $cart = $_SESSION['cart'][0];
-endif;
+foreach($_SESSION['cart'] as $key => $value) {
+
+    $id = $value;
+
+}
+
     $stmt = database()->prepare("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE NOT `id` = ? ");
-    $stmt->bind_param('i', $cart);
+    $stmt->bind_param('i', $id);
     $stmt->execute();
     $result = $stmt->get_result();
 
