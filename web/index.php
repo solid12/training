@@ -23,16 +23,14 @@ $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
 <html>
     <head>
         <title><?php echo strtr("title", $trans); ?></title>
         <link href="style.css" rel="stylesheet">
     </head>
-
 <body>
 
-<?php foreach ($rows as $row){ ?>
+<?php foreach ($rows as $row): ?>
 <img  style="width: 250px;" src="<?= $row['id'] ?>.jpg">
 <ul>
     <li style="padding: 3px"><?= $row['title'] ?></li>
@@ -42,7 +40,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
     <a href="index.php?id=<?= $row['id'] ?>">Add</a>
-<?php } ?>
+<?php endforeach; ?>
 
 <a href="cart.php">Go to cart</a>
 </body>
