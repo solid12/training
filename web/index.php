@@ -1,22 +1,26 @@
 <?php
 require_once('common.php');
 
-$_SESSION['cart']=isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
-
-    if (isset($_GET['id'])):
-        array_push($_SESSION['cart'], $_GET['id']);
-    endif;
-
-foreach($_SESSION['cart'] as $key => $value) {
-
-    $id = $value;
-
-    $stmt = database()->prepare("SELECT `id`,`title`,`description`,`price` FROM `products` WHERE NOT `id` = ? ");
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $stmt->fetch();
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
 }
+
+if (isset($_REQUEST['id']) && $_REQUEST['id'] && !in_array($_REQUEST['id'], $_SESSION['cart'])) {
+    $_SESSION['cart'][] = $_REQUEST['id'];
+}
+
+$db = database();
+$query = "SELECT * FROM `products`";
+if (count($_SESSION['cart'])) {
+    $query .= ' WHERE id NOT IN (' . implode(', ', array_fill(0, count($_SESSION['cart']), '?')) . ')';
+}
+$stmt = $db->prepare($query);
+foreach (array_values($_SESSION['cart']) as $idx => $productId) {
+    $stmt->bindParam($idx + 1, $productId, PDO::PARAM_INT);
+}
+
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
@@ -28,7 +32,7 @@ foreach($_SESSION['cart'] as $key => $value) {
 
 <body>
 
-
+<?php foreach ($rows as $row){ ?>
 <img  style="width: 250px;" src="<?= $row['id'] ?>.jpg">
 <ul>
     <li style="padding: 3px"><?= $row['title'] ?></li>
@@ -37,10 +41,9 @@ foreach($_SESSION['cart'] as $key => $value) {
 </ul>
 
 
-    <a href="index.php?id=<?= $row['id'] ?>" name="id">Add</a>
+    <a href="index.php?id=<?= $row['id'] ?>">Add</a>
+<?php } ?>
 
-
-<?php $stmt->close(); ?>
 <a href="cart.php">Go to cart</a>
 </body>
 </html>

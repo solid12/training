@@ -3,10 +3,7 @@ require('config.php');
 session_start();
 
 function database(){
-    $link = new mysqli(DB_SERVER, DB_USER, DB_PASSWORD, DB_DATABASE);
-    if ($link->connect_error) {
-        die("Check connection");
-    }
+    $link = new PDO("mysql:host=" . DB_SERVER . ";dbname=" . DB_DATABASE, DB_USER, DB_PASSWORD);
     return $link;
 }
 
