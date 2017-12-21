@@ -31,7 +31,6 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
 
     <?php foreach ($rows as $row) : ?>
-        <?php var_dump(glob("images/{".$row['id'].".jpg,".$row['id'].".gif,".$row['id'].".tiff,".$row['id'].".png}", GLOB_BRACE)) ?>
         <?php $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE); ?>
         <img  style="width: 250px;" src="<?= $images ? $images[0] : '' ?>">
         <ul>
