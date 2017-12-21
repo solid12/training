@@ -24,7 +24,6 @@ $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-
 if (isset($_POST['send'])) {
 
 
@@ -44,11 +43,10 @@ if (isset($_POST['send'])) {
     $headers = "From: admin@example.com" . "\r\n" .
         "CC: somebodyelse@example.com";
 
-  $mail = mail($adminemail, $subject, $txt, $headers, "-f " . $from);
+    $mail = mail(ADMINEMAIL, $subject, $txt, $headers, "-f " . $from);
 
     if (@$mail) {
-
-        echo 'Email trimis';
+        echo 'The email was sent';
     }
 
 }

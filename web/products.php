@@ -3,51 +3,36 @@ require_once('common.php');
 
 if (!isset($_SESSION['admin'])) {
 
-    die("Trebuie sa te loghezi pentru a vedea pagina !");
+    die("You should to be logged in to see the page !");
 }
 
-$result = database()->query("SELECT `id`,`title`,`description`,`price` FROM `products` ORDER by `id` ");
+$db = database();
+$query = "SELECT * FROM `products` ORDER BY `id` ASC";
+$stmt = $db->prepare($query);
+$stmt->execute();
+$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
-
-<?php if ($result->num_rows > 0): ?>
-<?php while ($row = $result->fetch_assoc()) : ?>
-
 <html>
 <head>
-    <title><?php echo strtr("title", $trans); ?></title>
+    <title><?= trans("title") ?></title>
     <link href="style.css" rel="stylesheet">
 </head>
 
 <body>
-<table>
+<?php foreach ($rows as $row) : ?>
+    <?php $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE); ?>
+    <img  style="width: 250px;" src="<?= $images ? $images[0] : '' ?>">
+    <ul>
+        <li style="padding: 3px"><?= $row['title'] ?></li>
+        <li style="padding: 3px"><?= $row['description'] ?></li>
+        <li style="padding: 3px"><?= $row['price'] ?></li>
+    </ul>
 
-    <tbody>
-    <tr>
-        <img class="col-md-6" src="images/1.jpg">
-    </tr>
-    <tr>
-        <td><?= $row['title'] ?></td>
-    </tr>
-    <a class="pull-right" href="product.php?id=<?= $row['id'] ?>">Edit</a><a class="pull-right"
-                                                                             href="delete.php?id=<?= $row['id'] ?>">Delete</a>
-    <tr>
-        <td><?= $row['description'] ?></td>
-    </tr>
-    <tr>
-        <td><?= $row['price'] ?></td>
-    </tr>
+    <a href="product.php?id=<?= $row['id'] ?>"><?= trans("edit") ?></a> | <a href="delete.php?id=<?= $row['id'] ?>"><?= trans("delete") ?></a>
+<?php endforeach; ?>
 
+ <a class="pull-right" href="logout.php">Logout</a>
 
-    </tbody>
-</table>
-
-<?php endwhile; ?>
-<?php else: ?>
-
-    <?php echo 'Products not exist !'; ?>
-
-<?php endif; ?>
-
-<h6></h6><a class="pull-right" href="add.php">Add</a> <a class="pull-right" href="logout.php">Logout</a></h6>
 </body>
 </html>
