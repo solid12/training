@@ -1,8 +1,14 @@
 <?php
+
+if (!isset($_SESSION['admin'])) {
+
+    die("You should to be logged in to see this page !");
+}
+
 if (isset($_GET['id'])) {
     $link = database();
     $id = $_GET['id'];
-    $stmt->database()->prepare($link, "DELETE FROM `products`  WHERE `id`= ? LIMIT 1");
+    $stmt->database()->prepare($link, "DELETE FROM `products` WHERE `id`= ? LIMIT 1");
     $stmt->bind_param('i', $id);
     $stmt->execute();
 
