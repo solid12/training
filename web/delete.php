@@ -11,7 +11,6 @@ if (isset($_GET['id'])) {
     $stmt->database()->prepare($link, "DELETE FROM `products` WHERE `id`= ? LIMIT 1");
     $stmt->bind_param('i', $id);
     $stmt->execute();
-
 }
 ?>
 <html>

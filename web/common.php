@@ -8,13 +8,6 @@ function database()
     return $link;
 }
 
-//function sql_safe($value) {
-//    if (get_magic_quotes_gpc())
-//        $value=stripslashes_recursive($value);
-//    return mysqli_real_escape_string(database(), $value);
-//}
-
-
 function trans($label)
 {
     global $trans;
