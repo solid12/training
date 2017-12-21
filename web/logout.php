@@ -9,7 +9,7 @@ header("Refresh: 3; url=index.php");
 
 <html>
 <head>
-    <title><?php echo strtr("title", $trans); ?></title>
+    <title><?= trans("title") ?></title>
     <link href="style.css" rel="stylesheet">
 </head>
 

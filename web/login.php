@@ -14,13 +14,13 @@ if(isset($_SESSION['admin'])) {
 
         if(!($usern === ADMIN && $passw === PASSWORD)){
 
-            $msg = "Username or Password are wrong !";
+            $msg = trans("wcred") ;
 
         }else{
 
             $_SESSION['admin'] = true;
             $_SESSION['admin'] = $usern;
-            $msg = "Logged with success !";
+            $msg = trans("slog");
             header("Refresh:3; url=products.php");
 
         }
@@ -31,7 +31,7 @@ if(isset($_SESSION['admin'])) {
 
 <html>
 <head>
-    <title><?php echo strtr("title", $trans); ?></title>
+    <title><?= trans("title") ?></title>
     <link href="style.css" rel="stylesheet">
 </head>
 
@@ -41,11 +41,11 @@ if(isset($_SESSION['admin'])) {
 <div id="login">
     <?php if(isset($_POST['login'])) { echo '<center>'.$msg.'</center>'; } ?>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="login">
-        <label>Username</label>
-        <input type="text" name="user" placeholder="Username" autocomplete="off" required="required"/>
-        <label>Password</label>
-        <input type="password" name="password" placeholder="Password" autocomplete="off" required="required"/>
-        <input type="submit" class="button" name="login" value="Login">
+        <label><?= trans("user") ?></label>
+        <input type="text" name="user" placeholder="<?= trans("user") ?>" autocomplete="off" required="required"/>
+        <label><?= trans("pass") ?></label>
+        <input type="password" name="password" placeholder="<?= trans("pass") ?>" autocomplete="off" required="required"/>
+        <input type="submit" class="button" name="login" value="<?= trans("login") ?>">
     </form>
 </div>
 

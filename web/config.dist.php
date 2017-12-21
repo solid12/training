@@ -6,4 +6,7 @@ define("DB_DATABASE", "database");
 define("ADMIN", "");
 define("PASSWORD", "");
 define("ADMINEMAIL", "admin@example.com");
+
+$trans = array(
+);
 ?>
