@@ -10,7 +10,7 @@ if (isset($_POST['login'])) {
 
     $usern = $_POST['user'];
     $passw = $_POST['password'];
-    
+
     if (!($usern === ADMIN && $passw === PASSWORD)) {
 
         $msg = trans("wcred");
@@ -43,7 +43,8 @@ if (isset($_POST['login'])) {
         <label><?= trans("user") ?></label>
         <input type="text" name="user" placeholder="<?= trans("user") ?>" autocomplete="off" required="required"/>
         <label><?= trans("pass") ?></label>
-        <input type="password" name="password" placeholder="<?= trans("pass") ?>" autocomplete="off" required="required"/>
+        <input type="password" name="password" placeholder="<?= trans("pass") ?>" autocomplete="off"
+               required="required"/>
         <input type="submit" class="button" name="login" value="<?= trans("login") ?>">
     </form>
 </div>
