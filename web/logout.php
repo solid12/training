@@ -15,7 +15,7 @@ header("Refresh: 3; url=index.php");
 
     <body>
 
-<b>You are logged out !<b/>
+<b><?= trans("logou") ?><b/>
 
     </body>
 </html>
