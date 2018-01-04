@@ -11,7 +11,6 @@ header("Refresh: 3; url=index.php");
     <title><?= trans("title") ?></title>
     <link href="style.css" rel="stylesheet">
 </head>
-
 <body>
 
 <b><?= trans("logou") ?><b/>

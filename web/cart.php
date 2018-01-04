@@ -1,7 +1,7 @@
 <?php
 require('common.php');
 
-
+if
 if (isset($_REQUEST['id']) && $_REQUEST['id'] && in_array($_REQUEST['id'], $_SESSION['cart'])) {
     $id = $_REQUEST['id'];
     $items = $_SESSION["cart"];
@@ -29,27 +29,30 @@ if (isset($_POST['send'])) {
 
     $subject = trans("ycart");
     $from = 'admin@global-space.ro';
-    $txt = "Hello " . $_POST['name'] . ",
 
-    Your products from cart are:";
+
+    $headers = "From: " . $from . "\r\n";
+    $headers .= 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+    $txt = "<html><body>";
+    
+//" . trans('hello') . "," . $_POST['name'] . " " . trans('product_cart') . ":";
 
     foreach ($rows as $row) {
-        $txt .= "
-        Product name:  " . $row['title'] . " \n
-        Product Description: " . $row['description'] . "  \n
-        Product price:  " . $row['price'] . " \n
-        ";
+        $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
+        $txt .= "     
+<img style='width: 250px;' src='http://".$_SERVER['HTTP_HOST']."/" . $images . "'>
+<ul>
+    <li style='padding: 3px'>" . $row['title'] . "</li>
+    <li style='padding: 3px'>" . $row['description'] . "</li>
+    <li style='padding: 3px'> " . $row['price'] . "</li>
+</ul>";
+
     }
-    $headers = "From: admin@example.com" . "\r\n" .
-        "CC: somebodyelse@example.com";
-
-    $mail = mail(ADMINEMAIL, $subject, $txt, $headers, "-f " . $from);
-
-    if (@$mail) {
-        echo 'The email was sent';
+    $txt .="</body></html>";
+    $mail = @mail(ADMINEMAIL, $subject, $txt, $headers, "-f " . $from);
     }
-
-}
 
 ?>
 <html>

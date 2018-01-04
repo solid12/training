@@ -3,11 +3,15 @@ require_once('common.php');
 
 if (isset($_SESSION['admin'])) {
 
-    header("Refresh:0; url=products.php");
+    header("Location: products.php");
 }
+
+$msg = "";
+$ok ="";
 
 if (isset($_POST['login'])) {
 
+    $ok = false;
     $usern = $_POST['user'];
     $passw = $_POST['password'];
 
@@ -17,7 +21,7 @@ if (isset($_POST['login'])) {
 
     } else {
 
-        $_SESSION['admin'] = true;
+        $ok = true;
         $_SESSION['admin'] = $usern;
         $msg = trans("slog");
         header("Refresh:3; url=products.php");
@@ -28,18 +32,18 @@ if (isset($_POST['login'])) {
 
 ?>
 <html>
-<head>
-    <title><?= trans("title") ?></title>
-    <link href="style.css" rel="stylesheet">
-</head>
-
+    <head>
+        <title><?= trans("title") ?></title>
+        <link href="style.css" rel="stylesheet">
+    </head>
 <body>
 
 <div id="login">
-    <?php if (isset($_POST['login'])) {
+    <?php if($msg):
         echo '<center>' . $msg . '</center>';
-    } ?>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="login">
+    endif;
+    if($ok == FALSE): ?>
+    <form method="post" name="login">
         <label><?= trans("user") ?></label>
         <input type="text" name="user" placeholder="<?= trans("user") ?>" autocomplete="off" required="required"/>
         <label><?= trans("pass") ?></label>
@@ -47,6 +51,7 @@ if (isset($_POST['login'])) {
                required="required"/>
         <input type="submit" class="button" name="login" value="<?= trans("login") ?>">
     </form>
+    <?php endif; ?>
 </div>
 
 </body>

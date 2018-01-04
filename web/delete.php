@@ -8,21 +8,24 @@ if (!isset($_SESSION['admin'])) {
 if (isset($_GET['id'])) {
     $link = database();
     $id = $_GET['id'];
-    $stmt->database()->prepare($link, "DELETE FROM `products` WHERE `id`= ? LIMIT 1");
-    $stmt->bind_param('i', $id);
+    $stmt->database()->prepare($link, "DELETE FROM `products` WHERE `id`= ':id' LIMIT 1");
+    $stmt->bindParam(':id',$id PDO::PARAM_INT);
     $stmt->execute();
+
+    if ($stmt){
+        header("Refresh:3; url=products.php");
+    }
 }
 ?>
 <html>
-<head>
-    <title><?= trans("title") ?></title>
-    <link href="style.css" rel="stylesheet">
-</head>
+    <head>
+        <title><?= trans("title") ?></title>
+        <link href="style.css" rel="stylesheet">
+    </head>
 <body>
-<?php if ($stmt): ?>
+<?php if($stmt): ?>
 
-    <p><?= trans("thd") ?></p>
-    <meta http-equiv="refresh" content="3; url=products.php"/>
+    <p><?= trans("the_prod_deleted") ?></p>
 
 <?php endif; ?>
 

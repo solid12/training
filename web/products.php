@@ -14,11 +14,10 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <html>
-<head>
-    <title><?= trans("title") ?></title>
-    <link href="style.css" rel="stylesheet">
-</head>
-
+    <head>
+        <title><?= trans("title") ?></title>
+        <link href="style.css" rel="stylesheet">
+    </head>
 <body>
 <?php foreach ($rows as $row) : ?>
     <?php $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE); ?>
@@ -29,10 +28,11 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <li style="padding: 3px"><?= $row['price'] ?></li>
     </ul>
 
-    <a href="product.php?id=<?= $row['id'] ?>"><?= trans("edit") ?></a> | <a
-        href="delete.php?id=<?= $row['id'] ?>"><?= trans("delete") ?></a>
+    <a href="product.php?id=<?= $row['id'] ?>"><?= trans("edit") ?></a> |
+    <a href="delete.php?id=<?= $row['id'] ?>"><?= trans("delete") ?></a>
 <?php endforeach; ?>
 
+<a href="add.php">Add</a>
 <a href="logout.php">Logout</a>
 
 </body>
