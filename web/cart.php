@@ -36,8 +36,6 @@ if (isset($_POST['send'])) {
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
     $txt = "<html><body>";
-    
-//" . trans('hello') . "," . $_POST['name'] . " " . trans('product_cart') . ":";
 
     foreach ($rows as $row) {
         $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
