@@ -14,7 +14,6 @@ if (isset($_GET['id'])) {
 
     if ($stmt){
         header("Refresh:3; url=products.php");
-        echo '<center>'.trans("the_prod_deleted").'</center>';
     }
 }
 ?>
@@ -25,6 +24,7 @@ if (isset($_GET['id'])) {
     </head>
 <body>
 
+<center><?= trans("the_prod_deleted"); ?></center>
 
 </body>
 </html>

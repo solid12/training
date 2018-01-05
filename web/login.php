@@ -7,7 +7,7 @@ if (isset($_SESSION['admin'])) {
 }
 
 $msg = "";
-$ok ="";
+$ok = FALSE;
 
 if (isset($_POST['login'])) {
 
@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
 
     if (!($usern === ADMIN && $passw === PASSWORD)) {
 
-        $msg = trans("wcred");
+        $msg = trans("wrong_login");
 
     } else {
 
@@ -39,10 +39,10 @@ if (isset($_POST['login'])) {
 <body>
 
 <div id="login">
-    <?php if($msg) {
+    <?php if($msg):
         echo '<center>' . $msg . '</center>';
-    }
-    if($ok == FALSE): ?>
+    endif;
+    if($ok == false): ?>
     <form method="post" name="login">
         <label><?= trans("user") ?></label>
         <input type="text" name="user" placeholder="<?= trans("user") ?>" autocomplete="off" required="required"/>

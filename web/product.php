@@ -5,27 +5,30 @@ if (!isset($_SESSION['admin'])) {
     die("You should to be logged in to see this page !");
 }
 
+if(isset($_POST['submit'])) {
+
+    $title = $_POST["title"];
+    $description = $_POST["description"];
+    $price = $_POST["price"];
+
+}
+
 if (!isset($_GET['id'])) {
 
     if (isset($_POST['submit'])) {
-        $title = $_POST["title"];
-        $description = $_POST["description"];
-        $price = $_POST["price"];
 
         $stmt = database()->prepare("INSERT INTO `products` (`title`, `description`, `price`) VALUES (?, ?, ?)");
         $stmt->bindParam(1, $title, PDO::PARAM_STR);
         $stmt->bindParam(2, $description, PDO::PARAM_STR);
         $stmt->bindParam(3, $price, PDO::PARAM_INT);
         $stmt->execute();
+        header("Refresh: 3;url=products.php");
     }
+
 
 } else {
     $id = $_GET['id'];
     if (isset($_POST['submit'])) {
-
-        $title = $_POST["title"];
-        $description = $_POST["description"];
-        $price = $_POST["price"];
 
         $stmt = database()->prepare("UPDATE `products` SET `title`= ? ,`description`= ? ,`price`= ? WHERE `id` = ? ");
         $stmt->bindParam(1, $title, PDO::PARAM_STR);
@@ -33,9 +36,10 @@ if (!isset($_GET['id'])) {
         $stmt->bindParam(3, $price, PDO::PARAM_INT);
         $stmt->bindParam(4, $id, PDO::PARAM_INT);
         $stmt->execute();
+        header("Refresh: 3;url=products.php");
+    }
 
-
-        if (isset($_FILES['fileToUpload'])) {
+        if (isset($_FILES['fileToUpload']) && isset($_POST['submit'])) {
             $target_dir = "images/";
             $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
             $uploadOk = 1;
@@ -77,9 +81,7 @@ if (!isset($_GET['id'])) {
             }
         }
 
-    }
-
-    $stmt2 = database()->prepare("SELECT * FROM `products` WHERE `id`= ? LIMIT 0, 1");
+    $stmt2 = database()->prepare("SELECT * FROM `products` WHERE `id`= ? LIMIT 0,1");
     $stmt2->bindParam(1, $id, PDO::PARAM_INT);
     $stmt2->execute();
 
@@ -98,24 +100,24 @@ if (!isset($_GET['id'])) {
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-<?php if (isset($msg)) { ?>
+<?php if (isset($msg)): ?>
     <p><?= $msg ?></p><br/>
-<?php }
+<?php
+endif;
 if (isset($_POST['submit']) && ($stmt) && isset($id)){ ?>
 
     <strong><font color="red"><?= trans("info") ?> </strong> <?= trans("update_prod") ?></font></strong>
 <?php }else if($_POST['submit']){ ?>
 <strong><font color="red"><?= trans("info") ?> </strong> <?= trans("add_prod") ?></font></strong>
-
 <?php } ?>
 <div id="login">
     <form method="post" name="login" enctype="multipart/form-data">
         <label><?= trans("tprod") ?></label><br/>
-        <input type="text" name="title" placeholder="<?= trans("title_prod") ?>" value="<?php isset($_GET['id']) ? $datat : ''; ?>" autocomplete="off"/><br/>
+        <input type="text" name="title" placeholder="<?= trans("title_prod") ?>" value="<?php isset($_GET['id']) ? $datat : $_POST['title']; ?>" autocomplete="off"/><br/>
         <label><?= trans("desc_prod") ?></label><br/>
-        <input type="text" name="description" placeholder="<?= trans("desc_prod") ?>" value="<?php isset($_GET['id']) ? $datad : ''; ?>" autocomplete="off"/><br/>
+        <input type="text" name="description" placeholder="<?= trans("desc_prod") ?>" value="<?php isset($_GET['id']) ? $datad : $_POST['description']; ?>" autocomplete="off"/><br/>
         <label><?= trans("pprod") ?></label><br/>
-        <input type="number" name="price" placeholder="<?= trans("price_prod") ?>" value="<?php isset($_GET['id']) ? $datap : ''; ?>" autocomplete="off"/><br/>
+        <input type="number" name="price" placeholder="<?= trans("price_prod") ?>" value="<?php isset($_GET['id']) ? $datap : $_POST['price']; ?>" autocomplete="off"/><br/>
         <label><?= trans("up") ?></label><br/>
         <input type="file" name="fileToUpload" id="fileToUpload"><br/>
 
