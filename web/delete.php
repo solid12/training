@@ -8,8 +8,8 @@ if (!isset($_SESSION['admin'])) {
 if (isset($_GET['id'])) {
     $link = database();
     $id = $_GET['id'];
-    $stmt->database()->prepare($link, "DELETE FROM `products` WHERE `id`= ':id' LIMIT 1");
-    $stmt->bindParam(':id',$id PDO::PARAM_INT);
+    $stmt->database()->prepare($link, "DELETE FROM `products` WHERE `id`= ? LIMIT 1");
+    $stmt->bindParam(1,$id PDO::PARAM_INT);
     $stmt->execute();
 
     if ($stmt){

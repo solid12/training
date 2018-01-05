@@ -1,9 +1,12 @@
 <?php
 require_once('common.php');
 
-unset($_SESSION['admin']);
-
-header("Refresh: 3; url=index.php");
+if(!isset($_SESSION['admin'])){
+    header(Location: index.php);
+}else {
+    unset($_SESSION['admin']);
+    header("Refresh: 3; url=index.php");
+}
 
 ?>
 <html>

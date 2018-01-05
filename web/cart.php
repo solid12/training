@@ -1,7 +1,6 @@
 <?php
 require('common.php');
 
-if
 if (isset($_REQUEST['id']) && $_REQUEST['id'] && in_array($_REQUEST['id'], $_SESSION['cart'])) {
     $id = $_REQUEST['id'];
     $items = $_SESSION["cart"];
@@ -40,7 +39,7 @@ if (isset($_POST['send'])) {
     foreach ($rows as $row) {
         $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
         $txt .= "     
-<img style='width: 250px;' src='http://".$_SERVER['HTTP_HOST']."/" . $images . "'>
+<img style=width: 250px; src=http://".$_SERVER['HTTP_HOST']."/" . serialize($images) . ">
 <ul>
     <li style='padding: 3px'>" . $row['title'] . "</li>
     <li style='padding: 3px'>" . $row['description'] . "</li>

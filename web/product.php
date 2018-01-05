@@ -79,8 +79,8 @@ if (!isset($_GET['id'])) {
 
     }
 
-    $stmt2 = database()->prepare("SELECT * FROM `products` WHERE `id`= :id2 LIMIT 0, 1");
-    $stmt2->bindParam(':id2', $id, PDO::PARAM_INT);
+    $stmt2 = database()->prepare("SELECT * FROM `products` WHERE `id`= ? LIMIT 0, 1");
+    $stmt2->bindParam(1, $id, PDO::PARAM_INT);
     $stmt2->execute();
 
     while ($rand = $stmt2->fetch(PDO::FETCH_ASSOC)) {
