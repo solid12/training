@@ -35,7 +35,7 @@ if (!isset($_GET['id'])) {
         $stmt->bindParam(3, $price, PDO::PARAM_INT);
         $stmt->bindParam(4, $id, PDO::PARAM_INT);
         $stmt->execute();
-       // header("Refresh: 3;url=products.php");
+        header("Refresh: 3;url=products.php");
     }
 
         if (isset($_FILES['fileToUpload']) && isset($_POST['submit'])) {
