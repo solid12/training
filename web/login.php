@@ -39,9 +39,9 @@ if (isset($_POST['login'])) {
 <body>
 
 <div id="login">
-    <?php if($msg):
+    <?php if($msg) {
         echo '<center>' . $msg . '</center>';
-    endif;
+    }
     if($ok == FALSE): ?>
     <form method="post" name="login">
         <label><?= trans("user") ?></label>

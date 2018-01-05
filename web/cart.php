@@ -24,26 +24,23 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 if (isset($_POST['send'])) {
-
-
+    
     $subject = trans("ycart");
     $from = 'admin@global-space.ro';
-
-
     $headers = "From: " . $from . "\r\n";
     $headers .= 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
     $txt = "<html><body>";
-
+    $txt .= "".trans("hello").",".trans("product_cart").": <br/>";
     foreach ($rows as $row) {
         $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
         $txt .= "     
 <img style=width: 250px; src=http://".$_SERVER['HTTP_HOST']."/" . serialize($images) . ">
 <ul>
-    <li style='padding: 3px'>" . $row['title'] . "</li>
-    <li style='padding: 3px'>" . $row['description'] . "</li>
-    <li style='padding: 3px'> " . $row['price'] . "</li>
+    <li style='padding: 3px'>".trans("title_prod").":" . $row['title'] . "</li>
+    <li style='padding: 3px'>".trans("desc_prod").":" . $row['description'] . "</li>
+    <li style='padding: 3px'> ".trans("price").":" . $row['price'] . "</li>
 </ul>";
 
     }
