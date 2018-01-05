@@ -11,8 +11,6 @@ if(isset($_POST['submit'])) {
     $description = $_POST["description"];
     $price = $_POST["price"];
 
-
-
 }
 
 if (!isset($_GET['id'])) {
@@ -26,7 +24,6 @@ if (!isset($_GET['id'])) {
         $stmt->execute();
         header("Refresh: 3;url=products.php");
     }
-
 
 } else {
     $id = $_GET['id'];
@@ -52,8 +49,6 @@ if (!isset($_GET['id'])) {
             $newfilename = $idx . $file_ext;
             $target_dir = "images/";
             $target_file = $target_dir . $newfilename ;
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
             if (isset($_POST["submit"])) {
                 $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -83,7 +78,7 @@ if (!isset($_GET['id'])) {
             if ($uploadOk) {
 
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    
+                    $uploadOk = 1;
                     $msg = "" . trans('thef') . "" . basename($_FILES["fileToUpload"]["name"]) . " " . trans('has_upload') . "";
                 } else {
                     $msg = trans('error_upload');
