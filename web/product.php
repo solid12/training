@@ -11,6 +11,8 @@ if(isset($_POST['submit'])) {
     $description = $_POST["description"];
     $price = $_POST["price"];
 
+
+
 }
 
 if (!isset($_GET['id'])) {
@@ -36,12 +38,20 @@ if (!isset($_GET['id'])) {
         $stmt->bindParam(3, $price, PDO::PARAM_INT);
         $stmt->bindParam(4, $id, PDO::PARAM_INT);
         $stmt->execute();
-        header("Refresh: 3;url=products.php");
+       // header("Refresh: 3;url=products.php");
     }
 
         if (isset($_FILES['fileToUpload']) && isset($_POST['submit'])) {
+
+            $filename = $_FILES["fileToUpload"]["name"];
+            $file_basename = substr($filename, 0, strripos($filename, '.')); // get file extention
+            $file_ext = substr($filename, strripos($filename, '.')); // get file name
+            $stmt = database()->query("SELECT max(id) FROM `products`");
+            $idxx = $stmt->fetchColumn();
+            $idx = $idxx + 1;
+            $newfilename = $idx . $file_ext;
             $target_dir = "images/";
-            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+            $target_file = $target_dir . $newfilename ;
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
@@ -70,10 +80,12 @@ if (!isset($_GET['id'])) {
                 $msg = trans('file_format');
                 $uploadOk = 0;
             }
-            if ($uploadOk == 0) {
-                $msg = trans('file_not_upload');
-            } else {
+            if ($uploadOk) {
+
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+
+                    var_dump($newfilename);
+                   // rename($_FILES["fileToUpload"]["tmp_name"], $newn);
                     $msg = "" . trans('thef') . "" . basename($_FILES["fileToUpload"]["name"]) . " " . trans('has_upload') . "";
                 } else {
                     $msg = trans('error_upload');
