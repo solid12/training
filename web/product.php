@@ -83,9 +83,7 @@ if (!isset($_GET['id'])) {
             if ($uploadOk) {
 
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-
-                    var_dump($newfilename);
-                   // rename($_FILES["fileToUpload"]["tmp_name"], $newn);
+                    
                     $msg = "" . trans('thef') . "" . basename($_FILES["fileToUpload"]["name"]) . " " . trans('has_upload') . "";
                 } else {
                     $msg = trans('error_upload');
