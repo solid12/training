@@ -32,25 +32,25 @@ if (isset($_POST['login'])) {
 
 ?>
 <html>
-    <head>
-        <title><?= trans("title") ?></title>
-        <link href="style.css" rel="stylesheet">
-    </head>
+<head>
+    <title><?= trans("title") ?></title>
+    <link href="style.css" rel="stylesheet">
+</head>
 <body>
 
 <div id="login">
-    <?php if($msg):
+    <?php if ($msg):
         echo '<center>' . $msg . '</center>';
     endif;
-    if($ok == false): ?>
-    <form method="post" name="login">
-        <label><?= trans("user") ?></label>
-        <input type="text" name="user" placeholder="<?= trans("user") ?>" autocomplete="off" required="required"/>
-        <label><?= trans("pass") ?></label>
-        <input type="password" name="password" placeholder="<?= trans("pass") ?>" autocomplete="off"
-               required="required"/>
-        <input type="submit" class="button" name="login" value="<?= trans("login") ?>">
-    </form>
+    if ($ok == false): ?>
+        <form method="post" name="login">
+            <label><?= trans("user") ?></label>
+            <input type="text" name="user" placeholder="<?= trans("user") ?>" autocomplete="off" required="required"/>
+            <label><?= trans("pass") ?></label>
+            <input type="password" name="password" placeholder="<?= trans("pass") ?>" autocomplete="off"
+                   required="required"/>
+            <input type="submit" class="button" name="login" value="<?= trans("login") ?>">
+        </form>
     <?php endif; ?>
 </div>
 

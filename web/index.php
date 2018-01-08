@@ -24,24 +24,24 @@ $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <html>
-    <head>
-        <title><?= trans("title") ?></title>
-        <link href="style.css" rel="stylesheet">
-    </head>
+<head>
+    <title><?= trans("title") ?></title>
+    <link href="style.css" rel="stylesheet">
+</head>
 <body>
 
-    <?php foreach ($rows as $row) : ?>
-        <?php $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE); ?>
-        <img  style="width: 250px;" src="<?= $images ? $images[0] : '' ?>">
-        <ul>
-            <li style="padding: 3px"><?= $row['title'] ?></li>
-            <li style="padding: 3px"><?= $row['description'] ?></li>
-            <li style="padding: 3px"><?= $row['price'] ?></li>
-        </ul>
+<?php foreach ($rows as $row) : ?>
+    <?php $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE); ?>
+    <img style="width: 250px;" src="<?= $images ? $images[0] : '' ?>">
+    <ul>
+        <li style="padding: 3px"><?= $row['title'] ?></li>
+        <li style="padding: 3px"><?= $row['description'] ?></li>
+        <li style="padding: 3px"><?= $row['price'] ?></li>
+    </ul>
 
-        <a href="index.php?id=<?= $row['id'] ?>"><?= trans("add") ?></a>
-    <?php endforeach; ?>
+    <a href="index.php?id=<?= $row['id'] ?>"><?= trans("add") ?></a>
+<?php endforeach; ?>
 
-    <a href="cart.php"><?= trans("gocart") ?></a>
+<a href="cart.php"><?= trans("gocart") ?></a>
 </body>
 </html>

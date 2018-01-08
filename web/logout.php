@@ -1,9 +1,9 @@
 <?php
 require_once('common.php');
 
-if(!isset($_SESSION['admin'])){
+if (!isset($_SESSION['admin'])) {
     header(Location: index.php);
-}else {
+} else {
     unset($_SESSION['admin']);
     header("Refresh: 3; url=index.php");
 }

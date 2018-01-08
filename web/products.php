@@ -32,7 +32,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <a href="delete.php?id=<?= $row['id'] ?>"><?= trans("delete") ?></a>
 <?php endforeach; ?>
 
-<a href="add.php">Add</a>
+<a href="product.php">Add</a>
 <a href="logout.php">Logout</a>
 
 </body>
