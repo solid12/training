@@ -34,9 +34,10 @@ if (isset($_POST['send'])) {
     $txt = "<html><body>";
     $txt .= "".trans("hello").",".trans("product_cart").": <br/>";
     foreach ($rows as $row) {
+        
         $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
         $txt .= "     
-<img style=width: 250px; src=http://".$_SERVER['HTTP_HOST']."/" . serialize($images) . ">
+<img style=width: 250px; src=http://".$_SERVER['HTTP_HOST']."/" .$images. ">
 <ul>
     <li style='padding: 3px'>".trans("title_prod").":" . $row['title'] . "</li>
     <li style='padding: 3px'>".trans("desc_prod").":" . $row['description'] . "</li>
@@ -65,7 +66,7 @@ if (isset($_POST['send'])) {
         <li style="padding: 3px"><?= $row['price'] ?></li>
     </ul>
 
-    <a href="cart.php?id=<?= $row['id'] ?>"><?= trans("rmv") ?></a>
+    <a href="cart.php?id=<?= $row['id'] ?>"><?= trans("remove_prod") ?></a>
 <?php endforeach; ?>
 <br/>
 <br/>

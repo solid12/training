@@ -42,6 +42,6 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <a href="index.php?id=<?= $row['id'] ?>"><?= trans("add") ?></a>
 <?php endforeach; ?>
 
-<a href="cart.php"><?= trans("gocart") ?></a>
+<a href="cart.php"><?= trans("go_cart") ?></a>
 </body>
 </html>

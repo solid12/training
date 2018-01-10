@@ -7,7 +7,7 @@ if (isset($_SESSION['admin'])) {
 }
 
 $msg = "";
-$ok = FALSE;
+$ok = false;
 
 if (isset($_POST['login'])) {
 
@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
 
         $ok = true;
         $_SESSION['admin'] = $usern;
-        $msg = trans("slog");
+        $msg = trans("success_login");
         header("Refresh:3; url=products.php");
 
     }
