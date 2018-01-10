@@ -24,7 +24,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
 if (isset($_POST['send'])) {
-    
+
     $subject = trans("your_cart");
     $from = 'admin@global-space.ro';
     $headers = "From: " . $from . "\r\n";
@@ -32,22 +32,22 @@ if (isset($_POST['send'])) {
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
     $txt = "<html><body>";
-    $txt .= "".trans("hello").",".trans("product_cart").": <br/>";
+    $txt .= "" . trans("hello") . "," . trans("product_cart") . ": <br/>";
     foreach ($rows as $row) {
 
         $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
         $txt .= "     
-<img style=width: 250px; src=http://".$_SERVER['HTTP_HOST']."/images/" .$images. ">
+<img style=width: 250px; src=http://" . $_SERVER['HTTP_HOST'] . "/images/" . $images . ">
 <ul>
-    <li style='padding: 3px'>".trans("title_prod").":" . $row['title'] . "</li>
-    <li style='padding: 3px'>".trans("desc_prod").":" . $row['description'] . "</li>
-    <li style='padding: 3px'> ".trans("price").":" . $row['price'] . "</li>
+    <li style='padding: 3px'>" . trans("title_prod") . ":" . $row['title'] . "</li>
+    <li style='padding: 3px'>" . trans("desc_prod") . ":" . $row['description'] . "</li>
+    <li style='padding: 3px'> " . trans("price") . ":" . $row['price'] . "</li>
 </ul>";
 
     }
-    $txt .="</body></html>";
+    $txt .= "</body></html>";
     $mail = @mail(ADMINEMAIL, $subject, $txt, $headers, "-f " . $from);
-    }
+}
 
 ?>
 <html>

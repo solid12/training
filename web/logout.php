@@ -16,7 +16,7 @@ if (!isset($_SESSION['admin'])) {
 </head>
 <body>
 
-<b><?= trans("logou") ?><b/>
+<b><?= trans("log_out") ?><b/>
 
 </body>
 </html>
