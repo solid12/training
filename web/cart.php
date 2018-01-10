@@ -25,7 +25,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if (isset($_POST['send'])) {
     
-    $subject = trans("ycart");
+    $subject = trans("your_cart");
     $from = 'admin@global-space.ro';
     $headers = "From: " . $from . "\r\n";
     $headers .= 'MIME-Version: 1.0' . "\r\n";
@@ -34,7 +34,7 @@ if (isset($_POST['send'])) {
     $txt = "<html><body>";
     $txt .= "".trans("hello").",".trans("product_cart").": <br/>";
     foreach ($rows as $row) {
-        
+
         $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
         $txt .= "     
 <img style=width: 250px; src=http://".$_SERVER['HTTP_HOST']."/" .$images. ">
