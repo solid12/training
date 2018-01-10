@@ -116,11 +116,11 @@ if (isset($_POST['submit']) && ($stmt) && isset($id)) { ?>
 <?php } ?>
 <div id="login">
     <form method="post" name="login" enctype="multipart/form-data">
-        <label><?= trans("tprod") ?></label><br/>
+        <label><?= trans("title_prod") ?></label><br/>
         <input type="text" name="title" placeholder="<?= trans("title_prod") ?>" value="<?php isset($_GET['id']) ? $datat : $_POST['title']; ?>" autocomplete="off"/><br/>
         <label><?= trans("desc_prod") ?></label><br/>
         <input type="text" name="description" placeholder="<?= trans("desc_prod") ?>" value="<?php isset($_GET['id']) ? $datad : $_POST['description']; ?>" autocomplete="off"/><br/>
-        <label><?= trans("pprod") ?></label><br/>
+        <label><?= trans("price_prod") ?></label><br/>
         <input type="number" name="price" placeholder="<?= trans("price_prod") ?>" value="<?php isset($_GET['id']) ? $datap : $_POST['price']; ?>" autocomplete="off"/><br/>
         <label><?= trans("up") ?></label><br/>
         <input type="file" name="fileToUpload" id="fileToUpload"><br/>
