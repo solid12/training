@@ -72,9 +72,9 @@ if (isset($_POST['send'])) {
 <br/>
 <form style="padding: 120px 30px" action="" method="post" name="cart">
     <input type="name" name="name" placeholder="<?= trans("name") ?>" autocomplete="off" required="required"/>
-    <input type="email" name="contact" placeholder="<?= trans("cdet") ?>" autocomplete="off" required="required"/>
+    <input type="email" name="contact" placeholder="<?= trans("conctact_details") ?>" autocomplete="off" required="required"/>
     <textarea rows="4" cols="30" name="comment" form="cart"><?= trans("comms") ?></textarea>
-    <button type="submit" class="btn btn-success pull-right" name="send"><?= trans("cout") ?></button>
+    <button type="submit" class="btn btn-success pull-right" name="send"><?= trans("checkout") ?></button>
 </form>
 <a href="index.php"><?= trans("goindex") ?></a>
 
