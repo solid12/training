@@ -1,5 +1,8 @@
 <?php
 require('common.php');
+$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
+$mail = '';
+
 
 if (isset($_REQUEST['id']) && $_REQUEST['id'] && in_array($_REQUEST['id'], $_SESSION['cart'])) {
     $id = $_REQUEST['id'];
@@ -22,7 +25,6 @@ foreach (array_values($_SESSION['cart']) as $idx => $productId) {
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
 if (isset($_POST['send'])) {
 
     $subject = trans("your_cart");
@@ -36,8 +38,8 @@ if (isset($_POST['send'])) {
     foreach ($rows as $row) {
 
         $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
-        $txt .= "     
-<img style=width: 250px; src=http://" . $_SERVER['HTTP_HOST'] . "/images/" . $images . ">
+        $txt .= "
+<img style=width: 250px; src='".$protocol . $_SERVER['HTTP_HOST'] . "/" .$images ? $images[0] : '' . "'>
 <ul>
     <li style='padding: 3px'>" . trans("title_prod") . ":" . $row['title'] . "</li>
     <li style='padding: 3px'>" . trans("desc_prod") . ":" . $row['description'] . "</li>
@@ -57,8 +59,16 @@ if (isset($_POST['send'])) {
 </head>
 <body>
 
-<?php foreach ($rows as $row) : ?>
-    <?php $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE); ?>
+<?php if($mail): ?>
+
+<?= trans("email_send") ?>
+
+<?php else: ?>
+
+
+<?php foreach ($rows as $row) :
+ $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE); ?>
+
     <img style="width: 250px;" src="<?= $images ? $images[0] : '' ?>">
     <ul>
         <li style="padding: 3px"><?= $row['title'] ?></li>
@@ -76,6 +86,8 @@ if (isset($_POST['send'])) {
     <textarea rows="4" cols="30" name="comment" form="cart"><?= trans("comms") ?></textarea>
     <button type="submit" class="btn btn-success pull-right" name="send"><?= trans("checkout") ?></button>
 </form>
+
+<?php endif; ?>
 <a href="index.php"><?= trans("goindex") ?></a>
 
 </body>

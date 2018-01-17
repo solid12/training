@@ -2,7 +2,7 @@
 require_once('common.php');
 
 if (!isset($_SESSION['admin'])) {
-    header(Location: index.php);
+    header("Refresh: 1; url=login.php");
 } else {
     unset($_SESSION['admin']);
     header("Refresh: 3; url=index.php");
