@@ -39,7 +39,7 @@ if (isset($_POST['send'])) {
 
         $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
         $txt .= "
-<img style=width: 250px; src='".$protocol . $_SERVER['HTTP_HOST'] . "/" .$images ? $images[0] : '' . "'>
+<img style=width: 250px; src='".$protocol . $_SERVER['HTTP_HOST'] . "/" .($images ? $images[0] : '') . "'>
 <ul>
     <li style='padding: 3px'>" . trans("title_prod") . ":" . $row['title'] . "</li>
     <li style='padding: 3px'>" . trans("desc_prod") . ":" . $row['description'] . "</li>

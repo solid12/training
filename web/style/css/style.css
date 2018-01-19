@@ -3,25 +3,69 @@
     height: 78px;
 }
 
-.btnn{
+.new_button{
     color: white !important;
     font-weight: bold;
     font-size: 13px;
     font-weight: 500;
     text-align: center;
-    height: 33px;
-    padding: 8px 26px 13px !important;
 
 }
 
-.btnn:focus{
+.new_button:focus{
     border-bottom: 3px solid #e2534b;
     border-radius: 5px;
     background-color: #e8645a !important;
 }
 
-.btnn:hover{
+.new_button:hover{
     border-bottom: 3px solid #e2534b;
     border-radius: 5px;
     background-color: #e8645a !important;
+}
+
+.grad {
+    position: relative;top: -17px;
+    background-repeat:repeat-x;
+    background: transparent url(../grad.png);
+}
+
+.navbar-nav > li {
+    margin-right: 15px;
+}
+.navbar-nav > li:last-child {
+    margin-right: 0;
+}
+
+.carousel-new{
+
+    right: auto;
+    left: auto;
+    left: calc(50% - 150px);
+    width: 300px;
+}
+
+.logo1{
+    font-size: 29.2px;
+    color: white;
+    font-weight: bolder;
+
+}
+
+.logo2{
+    color: white;
+    font-size: 24.34px;
+    display: inline;
+}
+
+.nav-new{
+    background-color: #76c7c0;
+    height: 78px;
+}
+
+.icon2{
+    position: absolute;
+    left: 9px;
+    top: -8px;
+    color: #e2534b;
 }

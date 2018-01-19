@@ -1088,7 +1088,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: #fff;
+  background-color: #f3f3f3;
 }
 input,
 button,
@@ -3039,7 +3039,9 @@ select[multiple].input-lg {
   text-decoration: none;
 }
 
-.active{background-color: #62a29e;border-radius: 5px;border-bottom: 3px solid #528b86;padding: 6px 15px 15px !important;}
+
+
+.active2{background-color: #62a29e;border-radius: 5px;border-bottom: 3px solid #528b86;}
 
 .btn:active,
 .btn.active {
@@ -4172,12 +4174,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar {
   position: relative;
   min-height: 50px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
 }
 @media (min-width: 768px) {
   .navbar {
-    border-radius: 4px;
   }
 }
 @media (min-width: 768px) {
@@ -4366,8 +4365,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: left;
   }
   .navbar-nav > li > a {
-    padding-top: 15px;
-    padding-bottom: 15px;
   }
 }
 .navbar-form {
@@ -6319,7 +6316,7 @@ button.close {
 }
 .carousel-control {
   position: absolute;
-  top: 0;
+  top: calc(50% - 25px);
   bottom: 0;
   left: 0;
   width: 15%;
@@ -6327,27 +6324,24 @@ button.close {
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
-  background-color: rgba(0, 0, 0, 0);
-  filter: alpha(opacity=50);
-  opacity: .5;
+  width: 49px;
+  height: 60px;
+
 }
 .carousel-control.left {
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
-  background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(rgba(0, 0, 0, .0001)));
-  background-image:         linear-gradient(to right, rgba(0, 0, 0, .5) 0%, rgba(0, 0, 0, .0001) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
-  background-repeat: repeat-x;
+  background-color: #e8645a;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-bottom: 4px solid #e2534b;
+
 }
 .carousel-control.right {
+  background-color: #e8645a;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom: 4px solid #e2534b;
   right: 0;
   left: auto;
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
-  background-image:      -o-linear-gradient(left, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .0001)), to(rgba(0, 0, 0, .5)));
-  background-image:         linear-gradient(to right, rgba(0, 0, 0, .0001) 0%, rgba(0, 0, 0, .5) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
-  background-repeat: repeat-x;
 }
 .carousel-control:hover,
 .carousel-control:focus {
@@ -6392,7 +6386,6 @@ button.close {
 }
 .carousel-indicators {
   position: absolute;
-  bottom: 10px;
   left: 50%;
   z-index: 15;
   width: 60%;
@@ -6403,26 +6396,23 @@ button.close {
 }
 .carousel-indicators li {
   display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 1px;
+  width: 60px;
+  height: 6px;
+  margin: 0px;
   text-indent: -999px;
   cursor: pointer;
-  background-color: #000 \9;
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #fff;
-  border-radius: 10px;
+  background-color: #b0b8b9;
 }
 .carousel-indicators .active {
-  width: 12px;
-  height: 12px;
+  width: 60px;
+  height: 6px;
   margin: 0;
-  background-color: #fff;
+  background-color: #e2534b;
 }
 .carousel-caption {
   position: absolute;
   right: 15%;
-  bottom: 20px;
+  bottom: 50%;
   left: 15%;
   z-index: 10;
   padding-top: 20px;
@@ -6455,10 +6445,11 @@ button.close {
   .carousel-caption {
     right: 20%;
     left: 20%;
+    top: -10px
     padding-bottom: 30px;
   }
   .carousel-indicators {
-    bottom: 20px;
+    bottom: -35px;
   }
 }
 .clearfix:before,

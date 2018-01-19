@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:800" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,33 +23,25 @@
 <body>
 
 
-        <nav style="background-color: #76c7c0;height: 78px;" class="navbar navbar-default">
+        <nav class="navbar navbar-default nav-new">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div style="padding-top: 25.8px;padding-right: 2px;" class="navbar-brand">
-                    <span style="font-size: 29.2px;color: white; font-weight: bolder">MODUS</span> <span style="color: white;font-size: 24.34px;display: inline">versus</span>
-                    </div>
-                </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right navbar-text">
-                        <li><a class="active btnn" href="#">HOME</a></li>
-                        <li><a class="btnn" href="#">ABOUT</a></li>
-                        <li><a class="btnn" href="#">SERVICES</a></li>
+                        <div class="navbar-brand">
+                            <span class="logo1">MODUS</span> <span class="logo2">versus</span>
+                        </div>
+                        <li><a class="active2 new_button" href="#">HOME</a></li>
+                        <li><a class="new_button" href="#">ABOUT</a></li>
+                        <li><a class="new_button" href="#">SERVICES</a></li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle btnn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span> PORTOFOLIO</a>
+                            <a href="#" class="dropdown-toggle new_button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span> PORTOFOLIO</a>
 
                             <ul class="dropdown-menu">
-                                <span style="position: absolute;left: 9px;top: -8px;color: #e2534b;" class="glyphicon glyphicon-triangle-top"></span>
+                                <span class="glyphicon glyphicon-triangle-top icon_2"></span>
                                 <li><a href="#"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> Portofolio 2 column page  </a></li>
                                 <li><a href="#"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> Portofolio 2 column page  </a></li>
                                 <li><a href="#"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> Portofolio 2 column page  </a></li>
@@ -56,14 +49,51 @@
 
 
                         </li>
-                        <li><a class="btnn" href="#">BLOG</a></li>
-                        <li><a class="btnn" href="#">FEATURES</a></li>
-                        <li><a class="btnn" href="#">CONTACTS</a></li>
-                        <li><a class="btnn"href="#"><span style="font-size: 13px" class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+                        <li><a class="new_button" href="#">BLOG</a></li>
+                        <li><a class="new_button" href="#">FEATURES</a></li>
+                        <li><a class="new_button" href="#">CONTACTS</a></li>
+                        <li><a class="new_button" href="#"><span style="font-size: 13px" class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
+        <div class="grad"></div>
         </nav>
+
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+
+                <div class="item active">
+                    <img src="https://images4.alphacoders.com/221/221716.jpg" alt="...">
+                    <div class="carousel-caption carousel-new">
+                        <h2>VESTIBULUM</h2>
+                        <p>Maecenas tincidunt, augue et rutrun contimentum, <br/> libero lectus mattis orci, ut commodo.</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" ></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span style="font-size: 24px;position: absolute;top: 30%;left: 17%;" class="glyphicon glyphicon-menu-left" aria-hidden="true"></span> <span style="font-size: 24px;position: absolute;top: 30%;right: 35%;" class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span style="font-size: 24px;position: absolute;top: 30%;left: 17%;" class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> <span style="font-size: 24px;position: absolute;top: 30%;right: 35%;" class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
 
 
         <div class="container"><div style="background: red; margin-top: 800px;">asdasd</div></div>
