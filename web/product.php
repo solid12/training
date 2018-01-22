@@ -6,12 +6,14 @@ if (!isset($_SESSION['admin'])) {
     die("You should to be logged in to see this page !");
 }
 
+$db = database();
+
 $title = '';
 $description = '';
 $price = '';
 
 if (isset($_GET['id'])) {
-    $stmt2 = database()->prepare("SELECT * FROM `products` WHERE `id`= ?");
+    $stmt2 = $db->prepare("SELECT * FROM `products` WHERE `id`= ?");
     $stmt2->bindParam(1, $_GET['id'], PDO::PARAM_INT);
     $stmt2->execute();
     if ($row = $stmt2->fetch(PDO::FETCH_ASSOC)) {
@@ -36,7 +38,7 @@ if (isset($_POST['submit'])) {
         if(isset($_GET['id'])){
             $idx = $_GET['id'];
         }else{
-            $idx = database()->lastInsertId();
+        $idx = md5(date('Y/m/d') + $_SESSION['admin']);
         }
         $newFileName = $idx . $file_ext;
 
@@ -93,11 +95,16 @@ if (isset($_POST['submit'])) {
 
         }else{
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                $stmt1 = database()->prepare("INSERT INTO `products` (`title`, `description`, `price`) VALUES (?, ?, ?)");
+                $stmt1 = $db->prepare("INSERT INTO `products` (`title`, `description`, `price`) VALUES (?, ?, ?)");
                 $stmt1->bindParam(1, $title, PDO::PARAM_STR);
                 $stmt1->bindParam(2, $description, PDO::PARAM_STR);
                 $stmt1->bindParam(3, $price, PDO::PARAM_INT);
                 $stmt1->execute();
+                $ix = $db->lastInsertId();
+                $idxx = "images/".$ix."";
+                $idx2 = "".md5(date('Y/m/d') + $_SESSION['admin'])."";
+                $files = glob("images/".$idx2.".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
+                rename("$files[0]", "$idxx.png");
                 $msg = trans("product_added");
             } else {
                 $msg = trans('error_upload');
@@ -130,7 +137,7 @@ if (isset($_POST['submit'])) {
 
             if ($uploadOk === true || $uploadOk === null) {
                 $id = $_GET['id'];
-                $stmt = database()->prepare("UPDATE `products` SET `title`= ? ,`description`= ? ,`price`= ? WHERE `id` = ? ");
+                $stmt = $db->prepare("UPDATE `products` SET `title`= ? ,`description`= ? ,`price`= ? WHERE `id` = ? ");
                 $stmt->bindParam(1, $title, PDO::PARAM_STR);
                 $stmt->bindParam(2, $description, PDO::PARAM_STR);
                 $stmt->bindParam(3, $price, PDO::PARAM_INT);

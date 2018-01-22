@@ -1,0 +1,37 @@
+
+
+        <nav class="navbar navbar-default nav-new">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right navbar-text">
+                        <div class="navbar-brand">
+                            <span class="logo1">MODUS</span> <span class="logo2">versus</span>
+                        </div>
+                        <li><a class="active2 new_button" href="#">HOME</a></li>
+                        <li><a class="new_button" href="#">ABOUT</a></li>
+                        <li><a class="new_button" href="#">SERVICES</a></li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle new_button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span> PORTOFOLIO</a>
+
+                            <ul class="dropdown-menu">
+                                <span class="glyphicon glyphicon-triangle-top icon_2"></span>
+                                <li><a href="#"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> Portofolio 2 column page  </a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> Portofolio 2 column page  </a></li>
+                                <li><a href="#"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> Portofolio 2 column page  </a></li>
+                            </ul>
+
+
+                        </li>
+                        <li><a class="new_button" href="#">BLOG</a></li>
+                        <li><a class="new_button" href="#">FEATURES</a></li>
+                        <li><a class="new_button" href="#">CONTACTS</a></li>
+                        <li><a class="new_button" href="#"><span style="font-size: 13px" class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+
+        </nav>
