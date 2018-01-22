@@ -1,6 +1,6 @@
 <?php
 require('common.php');
-$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
+$protocol = stripos($_SERVER['SERVER_PROTOCOL'], 'https') === true ? 'https://' : 'http://';
 $mail = '';
 
 
@@ -39,7 +39,7 @@ if (isset($_POST['send'])) {
 
         $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
         $txt .= "
-<img style=width: 250px; src='".$protocol . $_SERVER['HTTP_HOST'] . "/" .($images ? $images[0] : '') . "'>
+<img style=width: 250px; src='" . $protocol . $_SERVER['HTTP_HOST'] . "/" . ($images ? $images[0] : '') . "'>
 <ul>
     <li style='padding: 3px'>" . trans("title_prod") . ":" . $row['title'] . "</li>
     <li style='padding: 3px'>" . trans("desc_prod") . ":" . $row['description'] . "</li>
@@ -59,33 +59,34 @@ if (isset($_POST['send'])) {
 </head>
 <body>
 
-<?php if($mail): ?>
+<?php if ($mail): ?>
 
-<?= trans("email_send") ?>
+    <?= trans("email_send") ?>
 
 <?php else: ?>
 
 
-<?php foreach ($rows as $row) :
- $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE); ?>
+    <?php foreach ($rows as $row) :
+        $images = glob("images/" . $row['id'] . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE); ?>
 
-    <img style="width: 250px;" src="<?= $images ? $images[0] : '' ?>">
-    <ul>
-        <li style="padding: 3px"><?= $row['title'] ?></li>
-        <li style="padding: 3px"><?= $row['description'] ?></li>
-        <li style="padding: 3px"><?= $row['price'] ?></li>
-    </ul>
+        <img style="width: 250px;" src="<?= $images ? $images[0] : '' ?>">
+        <ul>
+            <li style="padding: 3px"><?= $row['title'] ?></li>
+            <li style="padding: 3px"><?= $row['description'] ?></li>
+            <li style="padding: 3px"><?= $row['price'] ?></li>
+        </ul>
 
-    <a href="cart.php?id=<?= $row['id'] ?>"><?= trans("remove_prod") ?></a>
-<?php endforeach; ?>
-<br/>
-<br/>
-<form style="padding: 120px 30px" action="" method="post" name="cart">
-    <input type="name" name="name" placeholder="<?= trans("name") ?>" autocomplete="off" required="required"/>
-    <input type="email" name="contact" placeholder="<?= trans("conctact_details") ?>" autocomplete="off" required="required"/>
-    <textarea rows="4" cols="30" name="comment" form="cart"><?= trans("comms") ?></textarea>
-    <button type="submit" class="btn btn-success pull-right" name="send"><?= trans("checkout") ?></button>
-</form>
+        <a href="cart.php?id=<?= $row['id'] ?>"><?= trans("remove_prod") ?></a>
+    <?php endforeach; ?>
+    <br/>
+    <br/>
+    <form style="padding: 120px 30px" action="" method="post" name="cart">
+        <input type="name" name="name" placeholder="<?= trans("name") ?>" autocomplete="off" required="required"/>
+        <input type="email" name="contact" placeholder="<?= trans("conctact_details") ?>" autocomplete="off"
+               required="required"/>
+        <textarea rows="4" cols="30" name="comment" form="cart"><?= trans("comms") ?></textarea>
+        <button type="submit" class="btn btn-success pull-right" name="send"><?= trans("checkout") ?></button>
+    </form>
 
 <?php endif; ?>
 <a href="index.php"><?= trans("goindex") ?></a>

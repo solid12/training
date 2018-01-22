@@ -35,16 +35,16 @@ if (isset($_POST['submit'])) {
         $fileName = $_FILES["fileToUpload"]["name"];
         $fileBaseName = substr($fileName, 0, strripos($fileName, '.'));
         $file_ext = substr($fileName, strripos($fileName, '.'));
-        if(isset($_GET['id'])){
+        if (isset($_GET['id'])) {
             $idx = $_GET['id'];
-        }else{
-        $idx = md5(date('Y/m/d') + $_SESSION['admin']);
+        } else {
+            $idx = md5(date('Y/m/d') + $_SESSION['admin']);
         }
         $newFileName = $idx . $file_ext;
 
         $target_dir = "images/";
         $target_file = $target_dir . $newFileName;
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
         if (isset($_POST["submit"])) {
             @$check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
@@ -60,40 +60,40 @@ if (isset($_POST['submit'])) {
         if (file_exists($target_file)) {
             $msg = trans('file_exist');
             $uploadOk = false;
-        }else{
+        } else {
             $uploadOk = true;
         }
 
         if ($_FILES["fileToUpload"]["size"] > 500000) {
             $msg = trans('file_large');
             $uploadOk = false;
-        }else{
+        } else {
             $uploadOk = true;
         }
 
         if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
             $msg = trans('file_format');
             $uploadOk = false;
-        }else{
+        } else {
             $uploadOk = true;
         }
     }
 
     if (!isset($_GET['id'])) {
 
-        if(!isset($title) && (!$title)) {
+        if (!isset($title) && (!$title)) {
 
             $msg = trans("title_not_set");
 
-        }else if(!isset($description) && (!$description)) {
+        } else if (!isset($description) && (!$description)) {
 
             $msg = trans("description_not_set");
 
-        }else if(!isset($price)) {
+        } else if (!isset($price)) {
 
             $msg = trans("price_not_set");
 
-        }else{
+        } else {
             if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                 $stmt1 = $db->prepare("INSERT INTO `products` (`title`, `description`, `price`) VALUES (?, ?, ?)");
                 $stmt1->bindParam(1, $title, PDO::PARAM_STR);
@@ -101,9 +101,9 @@ if (isset($_POST['submit'])) {
                 $stmt1->bindParam(3, $price, PDO::PARAM_INT);
                 $stmt1->execute();
                 $ix = $db->lastInsertId();
-                $idxx = "images/".$ix."";
-                $idx2 = "".md5(date('Y/m/d') + $_SESSION['admin'])."";
-                $files = glob("images/".$idx2.".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
+                $idxx = "images/" . $ix . "";
+                $idx2 = "" . md5(date('Y/m/d') + $_SESSION['admin']) . "";
+                $files = glob("images/" . $idx2 . ".{jpg,jpeg,png,gif,bmp,tiff}", GLOB_BRACE);
                 rename("$files[0]", "$idxx.png");
                 $msg = trans("product_added");
             } else {
@@ -115,15 +115,15 @@ if (isset($_POST['submit'])) {
 
             $msg = trans("data_not_submit");
 
-        }else if(!isset($title) && (!$title)) {
+        } else if (!isset($title) && (!$title)) {
 
             $msg = trans("title_not_set");
 
-        }else if(!isset($description) && (!$description)) {
+        } else if (!isset($description) && (!$description)) {
 
             $msg = trans("description_not_set");
 
-        }else if(!isset($price)) {
+        } else if (!isset($price)) {
 
             $msg = trans("price_not_set");
 
@@ -149,7 +149,6 @@ if (isset($_POST['submit'])) {
         }
     }
 
-
 }
 
 ?>
@@ -166,11 +165,14 @@ if (isset($_POST['submit'])) {
 <div id="login">
     <form method="post" name="login" enctype="multipart/form-data">
         <label><?= trans("title_prod") ?></label><br/>
-        <input type="text" name="title" placeholder="<?= trans("title_prod") ?>" value="<?= $title ?>" autocomplete="off"/><br/>
+        <input type="text" name="title" placeholder="<?= trans("title_prod") ?>" value="<?= $title ?>"
+               autocomplete="off"/><br/>
         <label><?= trans("desc_prod") ?></label><br/>
-        <input type="text" name="description" placeholder="<?= trans("desc_prod") ?>" value="<?= $description ?>" autocomplete="off"/><br/>
+        <input type="text" name="description" placeholder="<?= trans("desc_prod") ?>" value="<?= $description ?>"
+               autocomplete="off"/><br/>
         <label><?= trans("price_prod") ?></label><br/>
-        <input type="number" name="price" placeholder="<?= trans("price_prod") ?>" value="<?= $price ?>" autocomplete="off"/><br/>
+        <input type="number" name="price" placeholder="<?= trans("price_prod") ?>" value="<?= $price ?>"
+               autocomplete="off"/><br/>
         <label><?= trans("up") ?></label><br/>
         <input type="file" name="fileToUpload" id="fileToUpload"><br/>
         <input type="submit" class="button" name="submit" value="<?= trans("submit") ?>">
